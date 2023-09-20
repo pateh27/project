@@ -27,5 +27,16 @@ public class cobaGudang {
         jmlKeluar = yo.nextInt();
         stokBarang2 = totStok2 - jmlKeluar;
         System.out.println("jumlah barang saat ini :"+ stokBarang2);
+        
+        System.out.println("Masukkan nama barang ke 3: ");
+        naBarang3 = yo.nextLine();
+        System.out.println("Masukkan tambahan barang : ");
+        jmlMasuk = yo.nextInt();
+        totStok3 = stokBarang3 + jmlMasuk;
+        System.out.println("Stok saat ini : "+ totStok3);
+        System.out.println("Jumlah barang yang akan anda ambil ");
+        jmlKeluar = yo.nextInt();
+        stokBarang3 = totStok3 - jmlKeluar;
+        System.out.println("jumlah barang saat ini :"+ stokBarang3);
     }
 }
