@@ -12,6 +12,6 @@ public class cobaGudang {
         System.out.println("Masukkan tambahan barang : ");
         jmlMasuk = yo.nextInt();
         totStok = stokBarang1 + jmlMasuk;
-        System.out.println("Stok saat ini : "+ totStok);
+        System.out.println("Stok saat ini : "+ totStok);
     }
 }
