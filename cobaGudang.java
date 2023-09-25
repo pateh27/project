@@ -18,7 +18,7 @@ public class cobaGudang {
         System.out.println("jumlah barang saat ini :"+ stokBarang1);
         
         System.out.println("Masukkan nama barang ke 2: ");
-        naBarang2 = yo.nextLine();
+        naBarang2 = yo.next();
         System.out.println("Masukkan tambahan barang : ");
         jmlMasuk = yo.nextInt();
         totStok2 = stokBarang2 + jmlMasuk;
@@ -29,7 +29,7 @@ public class cobaGudang {
         System.out.println("jumlah barang saat ini :"+ stokBarang2);
         
         System.out.println("Masukkan nama barang ke 3: ");
-        naBarang3 = yo.nextLine();
+        naBarang3 = yo.next();
         System.out.println("Masukkan tambahan barang : ");
         jmlMasuk = yo.nextInt();
         totStok3 = stokBarang3 + jmlMasuk;
