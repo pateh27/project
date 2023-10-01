@@ -79,6 +79,7 @@ public class cobaGudang {
             harga2 = yo.nextInt();
             val2 = harga2 * stokBarang2;
             System.out.println("Valuasi : " +val2);
+            
         }else if(pilihan == 3){
             System.out.println("======================================================");
             System.out.println("Masukkan nama barang : ");
@@ -98,4 +99,3 @@ public class cobaGudang {
         } 
     }
 }
-        
