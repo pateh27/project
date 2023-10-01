@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class cobaGudang {
@@ -36,6 +38,13 @@ public class cobaGudang {
         String naBarang1, naBarang2, naBarang3;
         int totStok1, totStok2, totStok3, stokBarang1 = 10, stokBarang2 = 7, stokBarang3 = 15;
         int jmlMasuk, jmlKeluar, pilihan,harga1, harga2, harga3, val1, val2, val3;
+        
+        LocalDate tanggalHariIni = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(2);
+
+       
+        String formatTanggalKadaluwarsa = tanggalKadaluwarsa.format(formatter);
 
 
         System.out.println("====================Menu Utama=======================");
@@ -97,5 +106,7 @@ public class cobaGudang {
             val3 = harga3 * stokBarang3;
             System.out.println("Valuasi : " +val3);
         } 
-    }
+        System.out.println("Tanggal hari ini: " + tanggalHariIni);
+        System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
+    }   
 }
