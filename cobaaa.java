@@ -1,42 +1,12 @@
 import java.util.Scanner;
 
-public class cobaGudang {
-    Scanner yo = new Scanner(System.in);
-     private static final String usn="gudang", pin="123456";
-        
-     public static void main(String[] args) {
-
-        System.out.println("=================SISTEM GUDANG=======================");
-        System.out.println("|               SELAMAT DATANG                      |");
-        System.out.println("|        MASUKKAN USERNAME DAN PIN ANDA             |");
-        System.out.println("=====================================================");
-
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Username : ");
-        String masukkanUsn = input.nextLine();
-        System.out.print("PIN : ");
-        String masukkanPin = input.nextLine();
-
-        if (masukkanUsn.equals(usn)) {
-            System.out.println("Username Benar");
-        } else {
-            System.out.println("Username Salah");
-            System.exit(0);
-        }
-
-        if (masukkanPin.equals(pin)) {
-            System.out.println("PIN Benar, Akses diberikan");
-        } else {
-            System.out.println("PIN Salah");
-            System.exit(0);
-        }
+public class cobaaa {
+    public static void main(String[] args) {
 
         Scanner yo = new Scanner(System.in);
-        String naBarang1, naBarang2, naBarang3;
-        int totStok1, totStok2, totStok3, stokBarang1 = 10, stokBarang2 = 7, stokBarang3 = 15;
-        int jmlMasuk, jmlKeluar, pilihan,harga1, harga2, harga3, val1, val2, val3;
-
+        String naBarang1, naBarang2, naBarang3, naBarang4, naBarang5;
+        int totStok1, totStok2, totStok3, totStok4, totStok5, stokBrg1 = 10, stokBrg2 = 7, stokBrg3 = 15, stokBrg4 = 20, stokBrg5 = 12; 
+        int jmlMasuk, jmlKeluar, pilihan,harga1, harga2, harga3, harga4, harga5, val1, val2, val3;
 
         System.out.println("====================Menu Utama=======================");
         System.out.println("| \t 1. RAK SEMBAKO                             |");
@@ -52,15 +22,15 @@ public class cobaGudang {
             naBarang1 = yo.next();
             System.out.println("Masukkan tambahan barang : ");
             jmlMasuk = yo.nextInt();
-            totStok1 = stokBarang1 + jmlMasuk;
+            totStok1 = stokBrg1 + jmlMasuk;
             System.out.println("Stok saat ini : "+ totStok1);
             System.out.println("Jumlah barang yang akan anda ambil ");
             jmlKeluar = yo.nextInt();
-            stokBarang1 = totStok1 - jmlKeluar;
-            System.out.println("jumlah barang saat ini :"+ stokBarang1);
+            stokBrg1 = totStok1 - jmlKeluar;
+            System.out.println("jumlah barang saat ini :"+ stokBrg1);
             System.out.println("Masukkan Harga barang ");
             harga1 = yo.nextInt();
-            val1 = harga1 * stokBarang1;
+            val1 = harga1 * stokBrg1;
             System.out.println("Valuasi : " +val1 );
             
         }else if(pilihan == 2){
@@ -69,15 +39,15 @@ public class cobaGudang {
             naBarang2 = yo.next();
             System.out.println("Masukkan tambahan barang : ");
             jmlMasuk = yo.nextInt();
-            totStok2 = stokBarang2 + jmlMasuk;
+            totStok2 = stokBrg2 + jmlMasuk;
             System.out.println("Stok saat ini : "+ totStok2);
             System.out.println("Jumlah barang yang akan anda ambil ");
             jmlKeluar = yo.nextInt();
-            stokBarang2 = totStok2 - jmlKeluar;
-            System.out.println("jumlah barang saat ini :"+ stokBarang2);
+            stokBrg2 = totStok2 - jmlKeluar;
+            System.out.println("jumlah barang saat ini :"+ stokBrg2);
             System.out.println("Masukkan Harga barang ");
             harga2 = yo.nextInt();
-            val2 = harga2 * stokBarang2;
+            val2 = harga2 * stokBrg2;
             System.out.println("Valuasi : " +val2);
         }else if(pilihan == 3){
             System.out.println("======================================================");
@@ -85,17 +55,17 @@ public class cobaGudang {
             naBarang3 = yo.next();
             System.out.println("Masukkan tambahan barang : ");
             jmlMasuk = yo.nextInt();
-            totStok3 = stokBarang3 + jmlMasuk;
+            totStok3 = stokBrg3 + jmlMasuk;
             System.out.println("Stok saat ini : "+ totStok3);
             System.out.println("Jumlah barang yang akan anda ambil ");
             jmlKeluar = yo.nextInt();
-            stokBarang3 = totStok3 - jmlKeluar;
-            System.out.println("jumlah barang saat ini :"+ stokBarang3);
+            stokBrg3 = totStok3 - jmlKeluar;
+            System.out.println("jumlah barang saat ini :"+ stokBrg3);
             System.out.println("Masukkan Harga barang");
             harga3 = yo.nextInt();
-            val3 = harga3 * stokBarang3;
+            val3 = harga3 * stokBrg3;
             System.out.println("Valuasi : " +val3);
-        } 
+
+    } 
+
     }
-}
-        
