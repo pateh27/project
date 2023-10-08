@@ -41,9 +41,8 @@ public class cobaGudang {
         
         LocalDate tanggalHariIni = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(2);
+        LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(6);
 
-       
         String formatTanggalKadaluwarsa = tanggalKadaluwarsa.format(formatter);
 
 
@@ -71,6 +70,8 @@ public class cobaGudang {
             harga1 = yo.nextInt();
             val1 = harga1 * stokBarang1;
             System.out.println("Valuasi : " +val1 );
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
             
         }else if(pilihan == 2){
             System.out.println("======================================================");
@@ -88,6 +89,8 @@ public class cobaGudang {
             harga2 = yo.nextInt();
             val2 = harga2 * stokBarang2;
             System.out.println("Valuasi : " +val2);
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
             
         }else if(pilihan == 3){
             System.out.println("======================================================");
@@ -105,8 +108,9 @@ public class cobaGudang {
             harga3 = yo.nextInt();
             val3 = harga3 * stokBarang3;
             System.out.println("Valuasi : " +val3);
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
         } 
-        System.out.println("Tanggal hari ini: " + tanggalHariIni);
-        System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
+        
     }   
 }
