@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class cobaGudang {
     Scanner yo = new Scanner(System.in);
-     private static final String usn="gudang", pin="123456";
+     private static final String usnBenar="admin", pinBenar="gudang123";
+     int maksPercobaan = 3;
         
      public static void main(String[] args) {
 
@@ -15,23 +16,22 @@ public class cobaGudang {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Username : ");
-        String masukkanUsn = input.nextLine();
-        System.out.print("PIN : ");
-        String masukkanPin = input.nextLine();
+        for (int i = 1; i <= maksPercobaan; i++) {
+            System.out.print("Username : ");
+            String usnBenar = input.nextLine();
+            System.out.print("PIN : ");
+            String pinBenar = input.nextLine();
 
-        if (masukkanUsn.equals(usn)) {
-            System.out.println("Username Benar");
-        } else {
-            System.out.println("Username Salah");
-            System.exit(0);
-        }
+            if usnBenar.equalsIgnoreCase(usnBenar) && pinBenar.equalsIgnoreCase(pinBenar) {
+                System.out.println("Login Berhasil");
+                break;
+            } else {
+                System.out.println("Login Gagal. Sisa percobaan : " +(maksPercobaan - i));
 
-        if (masukkanPin.equals(pin)) {
-            System.out.println("PIN Benar, Akses diberikan");
-        } else {
-            System.out.println("PIN Salah");
-            System.exit(0);
+                if ( i == maksPercobaan) {
+                    System.out.println("Anda telah mencapai batas percobaan. Akun diblokir");
+                }
+            }
         }
 
         Scanner yo = new Scanner(System.in);
