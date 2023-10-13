@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class cobaGudang {
     Scanner yo = new Scanner(System.in);
      private static final String usnBenar="admin", pinBenar="gudang123";
-     int maksPercobaan = 3;
+     
         
      public static void main(String[] args) {
 
@@ -15,6 +15,7 @@ public class cobaGudang {
         System.out.println("=====================================================");
 
         Scanner input = new Scanner(System.in);
+        int maksPercobaan = 3;
 
         for (int i = 1; i <= maksPercobaan; i++) {
             System.out.print("Username : ");
@@ -22,7 +23,7 @@ public class cobaGudang {
             System.out.print("PIN : ");
             String pinBenar = input.nextLine();
 
-            if usnBenar.equalsIgnoreCase(usnBenar) && pinBenar.equalsIgnoreCase(pinBenar) {
+            if (usnBenar.equalsIgnoreCase(usnBenar) && pinBenar.equalsIgnoreCase(pinBenar)) {
                 System.out.println("Login Berhasil");
                 break;
             } else {
