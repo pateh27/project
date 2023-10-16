@@ -31,6 +31,7 @@ public class cobaGudang {
 
                 if ( i == maksPercobaan) {
                     System.out.println("Anda telah mencapai batas percobaan. Akun diblokir");
+                    return;
                 }
             }
         }
@@ -67,16 +68,19 @@ public class cobaGudang {
             System.out.print("Masukkan tambahan barang : ");
             jmlMasuk = yo.nextInt();
             totStok1 = stokBarang1 + jmlMasuk;
-            System.out.print("Stok saat ini : "+ totStok1);
-            System.out.print("Jumlah barang yang akan anda ambil ");
+            System.out.println("Stok saat ini : " +totStok1);
+            System.out.print("Jumlah barang yang akan anda ambil : ");
             jmlKeluar = yo.nextInt();
             stokBarang1 = totStok1 - jmlKeluar;
-            System.out.println("jumlah barang saat ini :"+ stokBarang1);
-            System.out.print("Masukkan Harga barang ");
+            System.out.println("jumlah barang saat ini : "+ stokBarang1);
+            System.out.print("Masukkan Harga barang : ");
             harga1 = yo.nextInt();
             val1 = harga1 * stokBarang1;
             System.out.println("Valuasi : " +val1 );
-                
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
+            
+            continue;
             case 2:
             System.out.println("======================================================");
              System.out.println("\t\t RAK KOSMETIK                                     ");
@@ -87,15 +91,17 @@ public class cobaGudang {
             jmlMasuk = yo.nextInt();
             totStok2 = stokBarang2 + jmlMasuk;
             System.out.println("Stok saat ini : "+ totStok2);
-            System.out.print("Jumlah barang yang akan anda ambil ");
+            System.out.print("Jumlah barang yang akan anda ambil : ");
             jmlKeluar = yo.nextInt();
             stokBarang2 = totStok2 - jmlKeluar;
-            System.out.println("jumlah barang saat ini :"+ stokBarang2);
-            System.out.print("Masukkan Harga barang ");
+            System.out.println("jumlah barang saat ini : "+ stokBarang2);
+            System.out.print("Masukkan Harga barang : ");
             harga2 = yo.nextInt();
             val2 = harga2 * stokBarang2;
             System.out.println("Valuasi : " +val2);
-            
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
+
             case 3:
             System.out.println("======================================================");
              System.out.println("\t\t RAK PAKAIAN                                      ");
@@ -106,15 +112,17 @@ public class cobaGudang {
             jmlMasuk = yo.nextInt();
             totStok3 = stokBarang3 + jmlMasuk;
             System.out.println("Stok saat ini : "+ totStok3);
-            System.out.print("Jumlah barang yang akan anda ambil ");
+            System.out.print("Jumlah barang yang akan anda ambil : ");
             jmlKeluar = yo.nextInt();
             stokBarang3 = totStok3 - jmlKeluar;
             System.out.println("jumlah barang saat ini :"+ stokBarang3);
-            System.out.print("Masukkan Harga barang");
+            System.out.print("Masukkan Harga barang : ");
             harga3 = yo.nextInt();
             val3 = harga3 * stokBarang3;
             System.out.println("Valuasi : " +val3);
-        
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
+
             default:
                 break;
         }
