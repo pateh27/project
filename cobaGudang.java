@@ -23,7 +23,7 @@ public class cobaGudang {
             System.out.print("PIN : ");
             String pinBenar = input.nextLine();
 
-            if (usnBenar.equalsIgnoreCase(usnBenar) && pinBenar.equalsIgnoreCase(pinBenar)) {
+            if (usnBenar.equalsIgnoreCase("admin") && pinBenar.equalsIgnoreCase("gudang123")) {
                 System.out.println("Login Berhasil");
                 break;
             } else {
