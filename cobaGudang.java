@@ -31,6 +31,7 @@ public class cobaGudang {
 
                 if ( i == maksPercobaan) {
                     System.out.println("Anda telah mencapai batas percobaan. Akun diblokir");
+                    return;
                 }
             }
         }
@@ -49,9 +50,9 @@ public class cobaGudang {
 
 
         System.out.println("====================Menu Utama=======================");
-        System.out.println("| \t 1. RAK SEMBAKO                             |");
-        System.out.println("| \t 2. RAK KOSMETIK                            |");
-        System.out.println("| \t 3. RAK PAKAIAN                             |");
+        System.out.println("| \t\t 1. RAK SEMBAKO                             |");
+        System.out.println("| \t\t 2. RAK KOSMETIK                            |");
+        System.out.println("| \t\t 3. RAK PAKAIAN                             |");
         System.out.println("=====================================================");
         System.out.print("Pilih Rak : ");
         // LOOPING RAK
@@ -76,6 +77,8 @@ public class cobaGudang {
             harga1 = yo.nextInt();
             val1 = harga1 * stokBarang1;
             System.out.println("Valuasi : " +val1 );
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
                 
             case 2:
             System.out.println("======================================================");
@@ -95,6 +98,8 @@ public class cobaGudang {
             harga2 = yo.nextInt();
             val2 = harga2 * stokBarang2;
             System.out.println("Valuasi : " +val2);
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
             
             case 3:
             System.out.println("======================================================");
@@ -114,6 +119,8 @@ public class cobaGudang {
             harga3 = yo.nextInt();
             val3 = harga3 * stokBarang3;
             System.out.println("Valuasi : " +val3);
+            System.out.println("Tanggal hari ini: " + tanggalHariIni);
+            System.out.println("Tanggal kadaluwarsa: " + tanggalKadaluwarsa);
         
             default:
                 break;
