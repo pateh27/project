@@ -1,4 +1,4 @@
-package daspro;
+
 import java.time.LocalDate;
 
 public class coba {
@@ -36,7 +36,6 @@ public class coba {
             System.out.println("Produk masih berlaku.");
         }
     }
-}
+} 
 
-System.out.println("Pilih RAK : ");
-        pilihan = yo.nextInt();
+
