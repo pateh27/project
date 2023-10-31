@@ -8,8 +8,8 @@ public class cobaaa {
         String[] rakSembako = {"beras", "gula", "telur", "minyak", "kopi", "teh", "kecap", "garam", "mie"};
         String[] rakKosmetik = {"facewash", "toner", "serum", "sunscreen", "lipcream", "liptint", "body serum"};
         String[] rakPakaian = {"kaos", "kemeja", "rok", "celana jeans", "jaket", "hoodie", "sweater", "cardigan"};
-        int totStok1, totStok2, totStok3, totStok4, totStok5, stokBrg1 = 10, stoktoner = 7, stokBrg3 = 15, stokBrg4 = 20, stokBrg5 = 12; 
-        int jmlMasuk, jmlKeluar, pilihan,pilKosmetik, harga1, harga2, harga3, harga4, harga5, val1, val2, val3;
+        int totStok1, totStok2, totStok3, totStok4, totStok5, stokBeras = 10, stoktoner = 7, stokBrg3 = 15, stokBrg4 = 20, stokBrg5 = 12; 
+        int jmlMasuk, jmlKeluar, pilihan,pilKosmetik, pilSembako, harga1, harga2, harga3, harga4, harga5, val1, val2, val3;
 
         System.out.println("====================Menu Utama=======================");
         System.out.println("| \t 1. RAK SEMBAKO                             |");
@@ -21,20 +21,26 @@ public class cobaaa {
 
         if (pilihan == 1) {
             System.out.println("======================================================");
-            System.out.println("Masukkan nama barang : ");
-            naBarang1 = yo.next();
-            System.out.println("Masukkan tambahan barang : ");
-            jmlMasuk = yo.nextInt();
-            totStok1 = stokBrg1 + jmlMasuk;
-            System.out.println("Stoksaat ini : "+ totStok1);
-            System.out.println("Jumlah barang yang akan anda ambil ");
-            jmlKeluar = yo.nextInt();
-            stokBrg1 = totStok1 - jmlKeluar;
-            System.out.println("jumlah barang saat ini :"+ stokBrg1);
-            System.out.println("Masukkan Harga barang ");
-            harga1 = yo.nextInt();
-            val1 = harga1 * stokBrg1;
-            System.out.println("Valuasi : " +val1 );
+            for (int i=0; i<rakSembako.length; i++) {
+                String element = rakSembako[i];
+                System.out.println("" + (i+1) + " " +element);}
+                System.out.println("Masukkan input list barang :");
+                pilSembako = yo.nextInt();
+                if (pilSembako == 1) {
+                    System.out.println("Tambahkan beras");
+                    jmlMasuk = yo.nextInt();
+                    totStok1 = stokBeras+jmlMasuk;
+                    System.out.println("Stok beras = "+stokBeras+" + "+jmlMasuk+" = "+totStok1);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokBeras = totStok1 - jmlKeluar;
+                    System.out.println("jumlah barang saat ini :"+ stokBeras);
+                    System.out.println("Masukkan Harga barang ");
+                    harga2 = yo.nextInt();
+                    val1 = harga2 * stokBeras;
+                    System.out.println("Valuasi : " +val1);
+                }
+                
             
         }else if(pilihan == 2){
             System.out.println("======================================================");
