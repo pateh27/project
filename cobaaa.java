@@ -269,7 +269,7 @@ public class cobaaa {
         }else if(pilihan == 3){
             System.out.println("======================================================");
             System.out.println("Masukkan nama barang : ");
-             
+            
             System.out.println("Masukkan tambahan barang : ");
             jmlMasuk = yo.nextInt();
             totStok3 = stokBrg3 + jmlMasuk;
