@@ -78,5 +78,6 @@ public class cobaaa {
             val3 = harga3 * stokBrg3;
             System.out.println("Valuasi : " +val3);
     } 
+
     }
-    }
+}
