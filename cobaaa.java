@@ -4,13 +4,15 @@ public class cobaaa {
     public static void main(String[] args) {
         
         Scanner yo = new Scanner(System.in);
-        String naBarang1, naBarang2, naBarang3, naBarang4, naBarang5;
+        
         String[] rakSembako = {"beras", "gula", "telur", "minyak", "kopi", "teh", "kecap", "garam", "mie"};
         String[] rakKosmetik = {"facewash", "toner", "serum", "sunscreen", "lipcream", "liptint", "body serum"};
         String[] rakPakaian = {"kaos", "kemeja", "rok", "celana jeans", "jaket", "hoodie", "sweater", "cardigan"};
-        int totStok1, totStok2, totStok3, totStok4, totStok5, stoktoner = 7, stokBrg3 = 15, stokBrg4 = 20, stokBrg5 = 12; 
+        int totStok1, totStok2, totStok3, totStok4, totStok5, stokBrg3 = 15, stokBrg4 = 20, stokBrg5 = 12; 
         int stokBeras = 10, stokGula = 8, stokTelur = 13, stokMinyak = 17, stokKopi = 4, stokTeh = 9, stokKecap = 5, stokGaram = 10, stokMie = 20;
+        int stokFacewash = 9, stoktoner = 7, stokSerum = 8, stokSunscreen = 12, stokLipcream = 15, stokLiptint = 18, stokBodyserum=11; 
         int valBeras, valGula, valTelur, valMinyak, valKopi,valteh, valKecap, valGaram, valMie;
+        int valFacewash, valToner, valSerum, valSunscren, valLipcream, valLiptint, valBodyser;
         int hargaBeras, hargaGula, hargaTelur, hargaMinyak, hargaKopi, hargaTeh, hargaKecap, hargaGaram, hargaMie;
         int jmlMasuk, jmlKeluar, pilihan,pilKosmetik, pilSembako, harga1, harga2, harga3, harga4, harga5, val2, val3;
 
@@ -163,7 +165,21 @@ public class cobaaa {
                 System.out.println("" + (i+1) + " " +element);}
                 System.out.print("Masukkan input list barang :");
                 pilKosmetik = yo.nextInt();
-                if (pilKosmetik == 2) {
+                if (pilKosmetik == 1) {
+                    System.out.print("Tambahkan Facewash :" );
+                    jmlMasuk = yo.nextInt();
+                    totStok2 = stokFacewash+jmlMasuk;
+                    System.out.println("Stok toner = "+stokFacewash+" + "+jmlMasuk+" = "+totStok2);
+                     System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokFacewash = totStok2 - jmlKeluar;
+                    System.out.println("jumlah barang saat ini :"+ stokFacewash);
+                    System.out.println("Masukkan Harga barang ");
+                    harga2 = yo.nextInt();
+                    valFacewash = harga2 * stokFacewash;
+                    System.out.println("Valuasi : " +valFacewash);
+                }
+                else if (pilKosmetik == 2) {
                     System.out.print("Tambahkan toner :" );
                     jmlMasuk = yo.nextInt();
                     totStok2 = stoktoner+jmlMasuk;
@@ -174,10 +190,79 @@ public class cobaaa {
                     System.out.println("jumlah barang saat ini :"+ stoktoner);
                     System.out.println("Masukkan Harga barang ");
                     harga2 = yo.nextInt();
-                    val2 = harga2 * stoktoner;
-                    System.out.println("Valuasi : " +val2);
+                    valToner = harga2 * stoktoner;
+                    System.out.println("Valuasi : " +valToner);
                 }
-           
+                else if (pilKosmetik == 3) {
+                    System.out.print("Tambahkan Serum :" );
+                    jmlMasuk = yo.nextInt();
+                    totStok2 = stokSerum+jmlMasuk;
+                    System.out.println("Stok toner = "+stokSerum+" + "+jmlMasuk+" = "+totStok2);
+                     System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokSerum = totStok2 - jmlKeluar;
+                    System.out.println("jumlah barang saat ini :"+ stokSerum);
+                    System.out.println("Masukkan Harga barang ");
+                    harga2 = yo.nextInt();
+                    valSerum = harga2 * stokSerum;
+                    System.out.println("Valuasi : " +valSerum);
+                }
+                else if (pilKosmetik == 4) {
+                    System.out.print("Tambahkan Sunscreen :" );
+                    jmlMasuk = yo.nextInt();
+                    totStok2 = stokSunscreen +jmlMasuk;
+                    System.out.println("Stok Sunscreen = "+stokSunscreen+" + "+jmlMasuk+" = "+totStok2);
+                     System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokSunscreen = totStok2 - jmlKeluar;
+                    System.out.println("jumlah barang saat ini :"+ stokSunscreen);
+                    System.out.println("Masukkan Harga barang ");
+                    harga2 = yo.nextInt();
+                    valSunscren = harga2 * stokSunscreen;
+                    System.out.println("Valuasi : " +valSunscren);
+                }
+                 else if (pilKosmetik == 5) {
+                    System.out.print("Tambahkan lipcream :" );
+                    jmlMasuk = yo.nextInt();
+                    totStok2 = stokLipcream+jmlMasuk;
+                    System.out.println("Stok Lipcream = "+stokLipcream+" + "+jmlMasuk+" = "+totStok2);
+                     System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokLipcream = totStok2 - jmlKeluar;
+                    System.out.println("jumlah barang saat ini :"+ stokLipcream);
+                    System.out.println("Masukkan Harga barang ");
+                    harga2 = yo.nextInt();
+                    valLipcream = harga2 * stokLipcream;
+                    System.out.println("Valuasi : " +valLipcream);
+                }
+                 else if (pilKosmetik == 6) {
+                    System.out.print("Tambahkan Liptint :" );
+                    jmlMasuk = yo.nextInt();
+                    totStok2 = stokLiptint+jmlMasuk;
+                    System.out.println("Stok Liptint = "+stokLiptint+" + "+jmlMasuk+" = "+totStok2);
+                     System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokLiptint = totStok2 - jmlKeluar;
+                    System.out.println("jumlah barang saat ini :"+ stokLiptint);
+                    System.out.println("Masukkan Harga barang ");
+                    harga2 = yo.nextInt();
+                    valLiptint = harga2 * stokLiptint;
+                    System.out.println("Valuasi : " +valLiptint);
+                }
+                 else if (pilKosmetik == 7) {
+                    System.out.print("Tambahkan Bodyserum :" );
+                    jmlMasuk = yo.nextInt();
+                    totStok2 = stokBodyserum+jmlMasuk;
+                    System.out.println("Stok bodyserum = "+stokBodyserum+" + "+jmlMasuk+" = "+totStok2);
+                     System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokBodyserum = totStok2 - jmlKeluar;
+                    System.out.println("jumlah barang saat ini :"+ stokBodyserum);
+                    System.out.println("Masukkan Harga barang ");
+                    harga2 = yo.nextInt();
+                    valBodyser = harga2 * stokBodyserum;
+                    System.out.println("Valuasi : " +valBodyser);
+                }
             
            
             
