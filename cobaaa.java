@@ -11,10 +11,12 @@ public class cobaaa {
         int totStok1, totStok2, totStok3, totStok4, totStok5, stokBrg3 = 15, stokBrg4 = 20, stokBrg5 = 12; 
         int stokBeras = 10, stokGula = 8, stokTelur = 13, stokMinyak = 17, stokKopi = 4, stokTeh = 9, stokKecap = 5, stokGaram = 10, stokMie = 20;
         int stokFacewash = 9, stoktoner = 7, stokSerum = 8, stokSunscreen = 12, stokLipcream = 15, stokLiptint = 18, stokBodyserum=11; 
+        int stokKaos = 10, stokKemeja = 9, stokRok = 8, stokCelanaJeans = 12, stokJaket = 15, stokHoodie = 13, stokSweater = 20, stokCardigan = 10;
         int valBeras, valGula, valTelur, valMinyak, valKopi,valteh, valKecap, valGaram, valMie;
         int valFacewash, valToner, valSerum, valSunscren, valLipcream, valLiptint, valBodyser;
         int hargaBeras, hargaGula, hargaTelur, hargaMinyak, hargaKopi, hargaTeh, hargaKecap, hargaGaram, hargaMie;
-        int jmlMasuk, jmlKeluar, pilihan,pilKosmetik, pilSembako, harga1, harga2, harga3, harga4, harga5, val2, val3;
+        int valKaos, valKemeja, valRok, valCelanaJeans, valJaket, valHoodie, valSweater, valCardigan;
+        int jmlMasuk, jmlKeluar, pilihan,pilKosmetik, pilSembako, pilPakaain, harga1, harga2, harga3, harga4, harga5, val2, val3;
 
         System.out.println("====================Menu Utama=======================");
         System.out.println("| \t 1. RAK SEMBAKO                             |");
@@ -268,21 +270,119 @@ public class cobaaa {
             
         }else if(pilihan == 3){
             System.out.println("======================================================");
-            System.out.println("Masukkan nama barang : ");
-            
-            System.out.println("Masukkan tambahan barang : ");
-            jmlMasuk = yo.nextInt();
-            totStok3 = stokBrg3 + jmlMasuk;
-            System.out.println("Stok saat ini : "+ totStok3);
-            System.out.println("Jumlah barang yang akan anda ambil ");
-            jmlKeluar = yo.nextInt();
-            stokBrg3 = totStok3 - jmlKeluar;
-            System.out.println("jumlah barang saat ini :"+ stokBrg3);
-            System.out.println("Masukkan Harga barang");
-            harga3 = yo.nextInt();
-            val3 = harga3 * stokBrg3;
-            System.out.println("Valuasi : " +val3);
-    } 
+            for(int i =0; i<rakPakaian.length; i++){
+                String element = rakPakaian[i];
+                System.out.println("" +(i+1) +" " +element);}
+                System.out.println("Masukkan input list barang : ");
+                pilPakaain = yo.nextInt();
+                if (pilPakaain == 1) {
+                    System.out.println("Tambahan kaos : ");
+                    jmlMasuk = yo.nextInt();
+                    totStok3 = stokKaos+jmlMasuk;
+                    System.out.println("Stok kaos = "+stokKaos+" + "+jmlMasuk+" = "+totStok3);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokKaos = totStok3 - jmlKeluar;
+                    System.out.println("Jumlah barang saat ini :"+ stokKaos);
+                    System.out.println("Masukkan harga barang ");
+                    harga3 = yo.nextInt();
+                    valKaos = harga3 * stokKaos;
+                    System.out.println("Valuasi : " +valKaos);
+
+                }else if (pilPakaain == 2) {
+                    System.out.println("Tambahkan Kemeja : ");
+                    jmlMasuk = yo.nextInt();
+                    totStok3 = stokKemeja+jmlMasuk;
+                    System.out.println("Stok Kemeja = "+stokKemeja+" + "+jmlMasuk+" = "+totStok3);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokKemeja = totStok3 - jmlKeluar;
+                    System.out.println("Jumlah barang saat ini :"+ stokKemeja);
+                    System.out.println("Masukkan harga barang ");
+                    harga3 = yo.nextInt();
+                    valKemeja = harga3 * stokKemeja;
+                    System.out.println("Valuasi : "+valKemeja);
+                }else if (pilPakaain == 3) {
+                    System.out.println("Tambahkan Rok : ");
+                    jmlMasuk = yo.nextInt();
+                    totStok3 = stokRok+jmlMasuk;
+                    System.out.println("Stok Rok = "+stokRok+" + "+jmlMasuk+" = "+totStok3);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokRok = totStok3 - jmlKeluar;
+                    System.out.println("Jumlah barang saat ini :"+ stokRok);
+                    System.out.println("Masukkan harga barang ");
+                    harga3 = yo.nextInt();
+                    valRok = harga3 * stokRok;
+                    System.out.println("Valuasi : "+valRok);
+                }else if (pilPakaain == 4) {
+                    System.out.println("Tambahkan Celana Jeans : ");
+                    jmlMasuk = yo.nextInt();
+                    totStok3 = stokCelanaJeans+jmlMasuk;
+                    System.out.println("Stok Celana Jeans = "+stokCelanaJeans+" + "+jmlMasuk+" = "+totStok3);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokCelanaJeans = totStok3 - jmlKeluar;
+                    System.out.println("Jumlah barang saat ini :"+ stokCelanaJeans);
+                    System.out.println("Masukkan harga barang ");
+                    harga3 = yo.nextInt();
+                    valCelanaJeans = harga3 * stokCelanaJeans;
+                    System.out.println("Valuasi : "+valCelanaJeans);
+                }else if (pilPakaain == 5) {
+                    System.out.println("Tambahkan Jaket : ");
+                    jmlMasuk = yo.nextInt();
+                    totStok3 = stokJaket+jmlMasuk;
+                    System.out.println("Stok Jaket = "+stokJaket+" + "+jmlMasuk+" = "+totStok3);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokJaket = totStok3 - jmlKeluar;
+                    System.out.println("Jumlah barang saat ini :"+ stokJaket);
+                    System.out.println("Masukkan harga barang ");
+                    harga3 = yo.nextInt();
+                    valJaket = harga3 * stokJaket;
+                    System.out.println("Valuasi : "+valJaket);
+                }else if (pilPakaain == 6) {
+                    System.out.println("Tambahkan Hoodie : ");
+                    jmlMasuk = yo.nextInt();
+                    totStok3 = stokHoodie+jmlMasuk;
+                    System.out.println("Stok Hoodie = "+stokHoodie+" + "+jmlMasuk+" = "+totStok3);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokHoodie = totStok3 - jmlKeluar;
+                    System.out.println("Jumlah barang saat ini :"+ stokHoodie);
+                    System.out.println("Masukkan harga barang ");
+                    harga3 = yo.nextInt();
+                    valHoodie = harga3 * stokHoodie;
+                    System.out.println("Valuasi : "+valHoodie);
+                }else if (pilPakaain == 7) {
+                    System.out.println("Tambahkan Sweater : ");
+                    jmlMasuk = yo.nextInt();
+                    totStok3 = stokSweater+jmlMasuk;
+                    System.out.println("Stok Kemeja = "+stokSweater+" + "+jmlMasuk+" = "+totStok3);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokSweater = totStok3 - jmlKeluar;
+                    System.out.println("Jumlah barang saat ini :"+ stokSweater);
+                    System.out.println("Masukkan harga barang ");
+                    harga3 = yo.nextInt();
+                    valSweater = harga3 * stokSweater;
+                    System.out.println("Valuasi : "+valSweater);
+                }else if (pilPakaain == 8) {
+                    System.out.println("Tambahkan Cardigan : ");
+                    jmlMasuk = yo.nextInt();
+                    totStok3 = stokCardigan+jmlMasuk;
+                    System.out.println("Stok Cardigan = "+stokCardigan+" + "+jmlMasuk+" = "+totStok3);
+                    System.out.println("Jumlah barang yang akan anda ambil ");
+                    jmlKeluar = yo.nextInt();
+                    stokCardigan = totStok3 - jmlKeluar;
+                    System.out.println("Jumlah barang saat ini :"+ stokCardigan);
+                    System.out.println("Masukkan harga barang ");
+                    harga3 = yo.nextInt();
+                    valCardigan = harga3 * stokCardigan;
+                    System.out.println("Valuasi : "+valCardigan);
+                }
+           
+        } 
 
     }
 }
