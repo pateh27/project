@@ -8,7 +8,7 @@ public class cobaaa {
         String[] rakSembako = {"beras", "gula", "telur", "minyak", "kopi", "teh", "kecap", "garam", "mie"};
         String[] rakKosmetik = {"facewash", "toner", "serum", "sunscreen", "lipcream", "liptint", "body serum"};
         String[] rakPakaian = {"kaos", "kemeja", "rok", "celana jeans", "jaket", "hoodie", "sweater", "cardigan"};
-        int totStok1, totStok2, totStok3, totStok4, totStok5, stokBrg3 = 15, stokBrg4 = 20, stokBrg5 = 12; 
+        int totStok1, totStok2, totStok3;
         int stokBeras = 10, stokGula = 8, stokTelur = 13, stokMinyak = 17, stokKopi = 4, stokTeh = 9, stokKecap = 5, stokGaram = 10, stokMie = 20;
         int stokFacewash = 9, stoktoner = 7, stokSerum = 8, stokSunscreen = 12, stokLipcream = 15, stokLiptint = 18, stokBodyserum=11; 
         int stokKaos = 10, stokKemeja = 9, stokRok = 8, stokCelanaJeans = 12, stokJaket = 15, stokHoodie = 13, stokSweater = 20, stokCardigan = 10;
@@ -16,7 +16,7 @@ public class cobaaa {
         int valFacewash, valToner, valSerum, valSunscren, valLipcream, valLiptint, valBodyser;
         int hargaBeras, hargaGula, hargaTelur, hargaMinyak, hargaKopi, hargaTeh, hargaKecap, hargaGaram, hargaMie;
         int valKaos, valKemeja, valRok, valCelanaJeans, valJaket, valHoodie, valSweater, valCardigan;
-        int jmlMasuk, jmlKeluar, pilihan,pilKosmetik, pilSembako, pilPakaain, harga1, harga2, harga3, harga4, harga5, val2, val3;
+        int jmlMasuk, jmlKeluar, pilihan,pilKosmetik, pilSembako, pilPakaain, harga2, harga3;
 
         System.out.println("====================Menu Utama=======================");
         System.out.println("| \t 1. RAK SEMBAKO                             |");
