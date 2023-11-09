@@ -87,6 +87,8 @@ public class cobaGudang {
                     hargaBeras = yo.nextInt();
                     valBeras = hargaBeras * stokBeras;
                     System.out.println("Valuasi : " +valBeras);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilSembako == 2) {
                     System.out.println("Tambahan Gula");
@@ -101,6 +103,8 @@ public class cobaGudang {
                     hargaGula = yo.nextInt();
                     valGula = hargaGula * stokBeras;
                     System.out.println("Valuasi : " +valGula);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilSembako == 3) {
                     System.out.println("Tambahan Telur");
@@ -115,6 +119,8 @@ public class cobaGudang {
                     hargaTelur = yo.nextInt();
                     valTelur = hargaTelur * stokBeras;
                     System.out.println("Valuasi : " +valTelur);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilSembako == 4) {
                     System.out.println("Tambahan Minyak");
@@ -129,6 +135,8 @@ public class cobaGudang {
                     hargaMinyak = yo.nextInt();
                     valMinyak = hargaMinyak * stokBeras;
                     System.out.println("Valuasi : " +valMinyak);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilSembako == 5) {
                     System.out.println("Tambahan Kopi");
@@ -143,6 +151,8 @@ public class cobaGudang {
                     hargaKopi = yo.nextInt();
                     valKopi = hargaKopi * stokBeras;
                     System.out.println("Valuasi : " +valKopi);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilSembako == 6) {
                     System.out.println("Tambahan Teh");
@@ -157,6 +167,8 @@ public class cobaGudang {
                     hargaTeh = yo.nextInt();
                     valteh = hargaTeh * stokBeras;
                     System.out.println("Valuasi : " +valteh);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilSembako == 7) {
                     System.out.println("Tambahan Kecap");
@@ -171,6 +183,8 @@ public class cobaGudang {
                     hargaKecap = yo.nextInt();
                     valKecap = hargaKecap * stokBeras;
                     System.out.println("Valuasi : " +valKecap);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilSembako == 8) {
                     System.out.println("Tambahan Garam");
@@ -185,6 +199,8 @@ public class cobaGudang {
                     hargaGaram = yo.nextInt();
                     valGaram = hargaGaram * stokBeras;
                     System.out.println("Valuasi : " +valGaram);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilSembako == 9) {
                     System.out.println("Tambahan Mie");
@@ -199,6 +215,8 @@ public class cobaGudang {
                     hargaMie = yo.nextInt();
                     valMie = hargaMie * stokBeras;
                     System.out.println("Valuasi : " +valMie);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
             
         }else if(pilihan == 2){
@@ -221,6 +239,8 @@ public class cobaGudang {
                     harga2 = yo.nextInt();
                     valFacewash = harga2 * stokFacewash;
                     System.out.println("Valuasi : " +valFacewash);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilKosmetik == 2) {
                     System.out.print("Tambahkan toner :" );
@@ -235,6 +255,8 @@ public class cobaGudang {
                     harga2 = yo.nextInt();
                     valToner = harga2 * stoktoner;
                     System.out.println("Valuasi : " +valToner);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilKosmetik == 3) {
                     System.out.print("Tambahkan Serum :" );
@@ -249,6 +271,8 @@ public class cobaGudang {
                     harga2 = yo.nextInt();
                     valSerum = harga2 * stokSerum;
                     System.out.println("Valuasi : " +valSerum);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                 else if (pilKosmetik == 4) {
                     System.out.print("Tambahkan Sunscreen :" );
@@ -263,6 +287,8 @@ public class cobaGudang {
                     harga2 = yo.nextInt();
                     valSunscren = harga2 * stokSunscreen;
                     System.out.println("Valuasi : " +valSunscren);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                  else if (pilKosmetik == 5) {
                     System.out.print("Tambahkan lipcream :" );
@@ -276,7 +302,8 @@ public class cobaGudang {
                     System.out.println("Masukkan Harga barang ");
                     harga2 = yo.nextInt();
                     valLipcream = harga2 * stokLipcream;
-                    System.out.println("Valuasi : " +valLipcream);
+                    System.out.println("Valuasi : " +valLipcream);System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                  else if (pilKosmetik == 6) {
                     System.out.print("Tambahkan Liptint :" );
@@ -291,6 +318,8 @@ public class cobaGudang {
                     harga2 = yo.nextInt();
                     valLiptint = harga2 * stokLiptint;
                     System.out.println("Valuasi : " +valLiptint);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
                  else if (pilKosmetik == 7) {
                     System.out.print("Tambahkan Bodyserum :" );
@@ -305,6 +334,8 @@ public class cobaGudang {
                     harga2 = yo.nextInt();
                     valBodyser = harga2 * stokBodyserum;
                     System.out.println("Valuasi : " +valBodyser);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
             
            
@@ -329,6 +360,8 @@ public class cobaGudang {
                     harga3 = yo.nextInt();
                     valKaos = harga3 * stokKaos;
                     System.out.println("Valuasi : " +valKaos);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
 
                 }else if (pilPakaain == 2) {
                     System.out.println("Tambahkan Kemeja : ");
@@ -343,6 +376,9 @@ public class cobaGudang {
                     harga3 = yo.nextInt();
                     valKemeja = harga3 * stokKemeja;
                     System.out.println("Valuasi : "+valKemeja);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
+
                 }else if (pilPakaain == 3) {
                     System.out.println("Tambahkan Rok : ");
                     jmlMasuk = yo.nextInt();
@@ -356,6 +392,9 @@ public class cobaGudang {
                     harga3 = yo.nextInt();
                     valRok = harga3 * stokRok;
                     System.out.println("Valuasi : "+valRok);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
+
                 }else if (pilPakaain == 4) {
                     System.out.println("Tambahkan Celana Jeans : ");
                     jmlMasuk = yo.nextInt();
@@ -369,6 +408,9 @@ public class cobaGudang {
                     harga3 = yo.nextInt();
                     valCelanaJeans = harga3 * stokCelanaJeans;
                     System.out.println("Valuasi : "+valCelanaJeans);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
+
                 }else if (pilPakaain == 5) {
                     System.out.println("Tambahkan Jaket : ");
                     jmlMasuk = yo.nextInt();
@@ -382,6 +424,9 @@ public class cobaGudang {
                     harga3 = yo.nextInt();
                     valJaket = harga3 * stokJaket;
                     System.out.println("Valuasi : "+valJaket);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
+
                 }else if (pilPakaain == 6) {
                     System.out.println("Tambahkan Hoodie : ");
                     jmlMasuk = yo.nextInt();
@@ -395,6 +440,9 @@ public class cobaGudang {
                     harga3 = yo.nextInt();
                     valHoodie = harga3 * stokHoodie;
                     System.out.println("Valuasi : "+valHoodie);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
+
                 }else if (pilPakaain == 7) {
                     System.out.println("Tambahkan Sweater : ");
                     jmlMasuk = yo.nextInt();
@@ -408,6 +456,9 @@ public class cobaGudang {
                     harga3 = yo.nextInt();
                     valSweater = harga3 * stokSweater;
                     System.out.println("Valuasi : "+valSweater);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
+
                 }else if (pilPakaain == 8) {
                     System.out.println("Tambahkan Cardigan : ");
                     jmlMasuk = yo.nextInt();
@@ -421,6 +472,8 @@ public class cobaGudang {
                     harga3 = yo.nextInt();
                     valCardigan = harga3 * stokCardigan;
                     System.out.println("Valuasi : "+valCardigan);
+                    System.out.println("Tanggal hari ini:" + tanggalHariIni);
+                    System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
                 }
            
         } 
