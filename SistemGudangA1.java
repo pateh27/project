@@ -30,6 +30,9 @@ public class SistemGudangA1{
             if(usnLogin.equalsIgnoreCase("admin")&& pinLogin.equalsIgnoreCase("gudang123")){
                 System.out.println("Login Berhasil");
                 break;
+            } else if (usnLogin.equalsIgnoreCase("owner") && pinLogin.equalsIgnoreCase("11924")) {
+                System.out.println("Login Berhasil sebagai Owner");
+                break;
             } else {
                 System.out.println("Login Gagal. Sisa percobaan : " +(maksPercobaan - i));
                 if ( i == maksPercobaan) {
