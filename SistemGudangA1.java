@@ -15,6 +15,7 @@ public class SistemGudangA1{
         System.out.println("| \t 2. RAK KOSMETIK                            |");
         System.out.println("| \t 3. RAK PAKAIAN                             |");
         System.out.println("=====================================================");
+        System.out.print("Pilih Rak : ");
     }    
     public static void main(String[] args) {
         Scanner print = new Scanner(System.in);
