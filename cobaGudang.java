@@ -74,15 +74,6 @@ public class cobaGudang {
                 System.out.println("" + (i+1) + " " +element);}
                 System.out.print("Masukkan input list barang :");
                 pilSembako = yo.nextInt();
-                if (pilihan == 1) {
-                    System.out.println("======================================================");
-                    for (int i=0; i<rakSembako.length; i++) {
-                        for(int j=0; j<rakSembako.length; j++){
-                        String element = rakSembako[i];
-                        System.out.println("" + (i+1) + " " +element);}
-                    }
-                        System.out.print("Masukkan input list barang :");
-                        pilSembako = yo.nextInt();
                         if (pilSembako == 1) {
                             System.out.print("Tambahan Beras");
                             jmlMasuk = yo.nextInt();
@@ -824,4 +815,3 @@ public class cobaGudang {
         } 
 
     }
-}
