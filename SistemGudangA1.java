@@ -14,18 +14,75 @@ public class SistemGudangA1 {
   public static Scanner print = new Scanner(System.in);
   public static int pilihan;
 
+  public static void main(String[] args) {
+    Scanner print = new Scanner(System.in);
+    login();
+    // percobaan login
+    int maksPercobaan = 3;
+    for (int i = 1; i <= maksPercobaan; i++) {
+      System.out.print(" Username : ");
+      String usnLogin = print.nextLine();
+      //   String usnLogin = "admin";
+      System.out.print(" PIN      : ");
+      String pinLogin = print.nextLine();
+      //   String pinLogin = "gudang123";
+      // cek usn dan pin
+      if (
+        usnLogin.equalsIgnoreCase("admin") &&
+        pinLogin.equalsIgnoreCase("gudang123")
+      ) {
+        System.out.println(
+          "====================================================="
+        );
+        System.out.println("| Login Berhasil  \t\t\t            |");
+        System.out.println(
+          "====================================================="
+        );
+        System.out.println();
+        break;
+      } else if (
+        usnLogin.equalsIgnoreCase("owner") && pinLogin.equalsIgnoreCase("11924")
+      ) {
+        System.out.println("Login Berhasil sebagai Owner");
+        break;
+      } else {
+        System.out.println(
+          "====================================================="
+        );
+        System.out.println(
+          "| Login Gagal. Sisa percobaan : " + (maksPercobaan - i) + "\t\t    |"
+        );
+        System.out.println(
+          "====================================================="
+        );
+        if (i == maksPercobaan) {
+          System.out.println(
+            "| Anda telah mencapai batas percobaan. Akun diblokir|"
+          );
+          System.out.println(
+            "====================================================="
+          );
+          return;
+        }
+      }
+    }
+    tampilMenu();
+    tampilItem();
+  }
+
   public static void tampilMenu() {
     System.out.println("====================Menu Utama=======================");
     System.out.println("| \t 1. RAK SEMBAKO                             |");
     System.out.println("| \t 2. RAK KOSMETIK                            |");
     System.out.println("| \t 3. RAK PAKAIAN                             |");
     System.out.println("=====================================================");
-    System.out.print("Pilih Rak : ");
+    System.out.print(" Pilih Rak : ");
     pilihan = print.nextInt();
+    System.out.println("=====================================================");
   }
 
-  public static void tampilItem(){
-     LocalDate tanggalHariIni = LocalDate.now();
+  public static void tampilItem() {
+    LocalDate tanggalHariIni = LocalDate.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(6);
     String formatTanggalKadaluwarsa = tanggalKadaluwarsa.format(formatter);
@@ -40,26 +97,49 @@ public class SistemGudangA1 {
     };
     String[] rakPakaian = { "kaos", "kemeja", "rok", "celana jeans", "jaket" };
     int stok, jmlMasuk, jmlKeluar, harga;
- System.out.print("Pilih item");
+    System.out.println();
+    System.out.println("====================Pilih Item=======================");
+
     if (pilihan == 1) {
       for (int i = 0; i < rakSembako.length; i++) {
         String element = rakSembako[i];
-        System.out.println("" + (i + 1) + " " + element);
+        System.out.println("| " + (i + 1) + ". " + element + "\t\t\t\t\t    |");
       }
-      //pemilihan item
+      System.out.println(
+        "====================================================="
+      );
+      System.out.print(" Pilih Item : ");
       int pilSembako = print.nextInt();
+      System.out.println(
+        "====================================================="
+      );
+
+      //pemilihan item
       if (pilSembako == 1) {
         //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS BERAS");
-        System.out.print("Tambahan Beras : ");
+        System.out.println();
+
+        System.out.println(
+          "====================================================="
+        );
+        System.out.println("|\t            Invetaris Beras        \t    |");
+        System.out.println(
+          "====================================================="
+        );
+
+        System.out.print(" Tambahan Beras : ");
         jmlMasuk = print.nextInt();
         stok = 34;
         stok = tambahStok(stok, jmlMasuk);
+        System.out.println(
+          "-------------------------------------------------------"
+        );
         System.out.print("Pengambilan Beras : ");
         jmlKeluar = print.nextInt();
         stok = kurangStok(stok, jmlKeluar);
-
+        System.out.println(
+          "-------------------------------------------------------"
+        );
         // jika pengambilan barang minus
         /*   if (stok<0) {
                     System.out.print("Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : ");
@@ -75,6 +155,7 @@ public class SistemGudangA1 {
         // System.out.print("Masukkan harga");
         // harga = print.nextInt();
         // hitungValuasi(harga, pilSembako);
+
         System.out.println("Tanggal hari ini:" + tanggalHariIni);
         System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
         tampilMenu();
@@ -520,55 +601,9 @@ public class SistemGudangA1 {
     print.close();
   }
 
-
-  public static void main(String[] args) {
-    Scanner print = new Scanner(System.in);
-    login();
-    // percobaan login
-    int maksPercobaan = 3;
-    for (int i = 1; i <= maksPercobaan; i++) {
-      System.out.print("Username : ");
-      // String usnLogin = print.nextLine();
-      String usnLogin = "admin";
-      System.out.print("PIN : ");
-      // String pinLogin = print.nextLine();
-      String pinLogin = "gudang123";
-      // cek usn dan pin
-      if (
-        usnLogin.equalsIgnoreCase("admin") &&
-        pinLogin.equalsIgnoreCase("gudang123")
-      ) {
-        System.out.println("Login Berhasil");
-        break;
-      } else if (
-        usnLogin.equalsIgnoreCase("owner") && pinLogin.equalsIgnoreCase("11924")
-      ) {
-        System.out.println("Login Berhasil sebagai Owner");
-        break;
-      } else {
-        System.out.println(
-          "Login Gagal. Sisa percobaan : " + (maksPercobaan - i)
-        );
-        if (i == maksPercobaan) {
-          System.out.println(
-            "Anda telah mencapai batas percobaan. Akun diblokir"
-          );
-          return;
-        }
-      }
-    }
-
-
-
-    tampilMenu();
-    tampilItem();
-    // pemilihan rak
-  }
-   
-
   static int tambahStok(int stok, int jmlMasuk) {
     int hasil = stok + jmlMasuk;
-    System.out.println("Jumlah stok saat ini adalah : " + hasil);
+    System.out.println(" Jumlah stok saat ini adalah : " + hasil);
     return hasil;
   }
 
