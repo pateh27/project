@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SistemGudangA1 {
 
-  public static void login() {
+  public static void Title() {
     System.out.println("=================SISTEM GUDANG A1====================");
     System.out.println("|          SELAMAT DATANG DI GUDANG A1              |");
     System.out.println("|        MASUKKAN USERNAME DAN PIN ANDA             |");
@@ -13,12 +13,45 @@ public class SistemGudangA1 {
 
   public static Scanner print = new Scanner(System.in);
   public static int pilihan;
-
   public static void main(String[] args) {
-    Scanner print = new Scanner(System.in);
-    login();
+    Title();
     // percobaan login
-    int maksPercobaan = 3;
+    login();
+    tampilMenu();
+    pilihan = print.nextInt();
+    int choose = 0;
+    choose = Integer.parseInt(print.nextLine());
+      switch(choose) {
+      case 1:
+        tampilItemSembako();
+      case 2:
+        tampilItemKosmetik();
+      case 3:
+        tampilItemPakaian();
+      }
+    }
+  
+  public static void tampilMenu() {
+    System.out.println("====================Menu Utama=======================");
+    System.out.println("| \t 1. RAK SEMBAKO                             |");
+    System.out.println("| \t 2. RAK KOSMETIK                            |");
+    System.out.println("| \t 3. RAK PAKAIAN                             |");
+    System.out.println("=====================================================");
+    System.out.print(" Pilih Rak : ");
+    pilihan = print.nextInt();
+    System.out.println("=====================================================");
+  }
+  public static void tampilItem() {
+    LocalDate tanggalHariIni = LocalDate.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(6);
+    String formatTanggalKadaluwarsa = tanggalKadaluwarsa.format(formatter);
+    System.out.println();
+    System.out.println("====================Pilih Item=======================");
+
+  }
+  static void login() {
+          int maksPercobaan = 3;
     for (int i = 1; i <= maksPercobaan; i++) {
       System.out.print(" Username : ");
       String usnLogin = print.nextLine();
@@ -34,7 +67,7 @@ public class SistemGudangA1 {
         System.out.println(
           "====================================================="
         );
-        System.out.println("| Login Berhasil  \t\t\t            |");
+        System.out.println("| Login Berhasil sebagai Admin \t\t\t   |");
         System.out.println(
           "====================================================="
         );
@@ -50,7 +83,7 @@ public class SistemGudangA1 {
           "====================================================="
         );
         System.out.println(
-          "| Login Gagal. Sisa percobaan : " + (maksPercobaan - i) + "\t\t    |"
+          "| Login Gagal. Sisa percobaan : " + (maksPercobaan - i) + "\t\t|"
         );
         System.out.println(
           "====================================================="
@@ -66,541 +99,7 @@ public class SistemGudangA1 {
         }
       }
     }
-    tampilMenu();
-    tampilItem();
   }
-
-  public static void tampilMenu() {
-    System.out.println("====================Menu Utama=======================");
-    System.out.println("| \t 1. RAK SEMBAKO                             |");
-    System.out.println("| \t 2. RAK KOSMETIK                            |");
-    System.out.println("| \t 3. RAK PAKAIAN                             |");
-    System.out.println("=====================================================");
-    System.out.print(" Pilih Rak : ");
-    pilihan = print.nextInt();
-    System.out.println("=====================================================");
-  }
-
-  public static void tampilItem() {
-    LocalDate tanggalHariIni = LocalDate.now();
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(6);
-    String formatTanggalKadaluwarsa = tanggalKadaluwarsa.format(formatter);
-    // inisiasi data utama
-    String[] rakSembako = { "beras", "gula", "garam", "telur", "minyak" };
-    String[] rakKosmetik = {
-      "facewash",
-      "toner",
-      "serum",
-      "sunscreen",
-      "lipcream",
-    };
-    String[] rakPakaian = { "kaos", "kemeja", "rok", "celana jeans", "jaket" };
-    int stok, jmlMasuk, jmlKeluar, harga;
-    System.out.println();
-    System.out.println("====================Pilih Item=======================");
-
-    if (pilihan == 1) {
-      for (int i = 0; i < rakSembako.length; i++) {
-        String element = rakSembako[i];
-        System.out.println("| " + (i + 1) + ". " + element + "\t\t\t\t\t    |");
-      }
-      System.out.println(
-        "====================================================="
-      );
-      System.out.print(" Pilih Item : ");
-      int pilSembako = print.nextInt();
-      System.out.println(
-        "====================================================="
-      );
-
-      //pemilihan item
-      if (pilSembako == 1) {
-        //perhitungan stok
-        System.out.println();
-
-        System.out.println(
-          "====================================================="
-        );
-        System.out.println("|\t            Invetaris Beras        \t    |");
-        System.out.println(
-          "====================================================="
-        );
-
-        System.out.print(" Tambahan Beras : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        stok = tambahStok(stok, jmlMasuk);
-        System.out.println(
-          "-------------------------------------------------------"
-        );
-        System.out.print("Pengambilan Beras : ");
-        jmlKeluar = print.nextInt();
-        stok = kurangStok(stok, jmlKeluar);
-        System.out.println(
-          "-------------------------------------------------------"
-        );
-        // jika pengambilan barang minus
-        /*   if (stok<0) {
-                    System.out.print("Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : ");
-                    String konfir = print.nextLine();
-                    if(konfir.equalsIgnoreCase("y")){
-                        kurangStok(pilSembako, jmlKeluar);    
-                    }else if(konfir.equalsIgnoreCase("n")){
-                        System.out.println("terimakasih");
-                        return;
-                    }
-                }*/
-        //perhitungan valuasi item
-        // System.out.print("Masukkan harga");
-        // harga = print.nextInt();
-        // hitungValuasi(harga, pilSembako);
-
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-        tampilMenu();
-        tampilItem();
-      } else if (pilSembako == 2) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS Gula");
-        System.out.print("Tambahan Gula : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Gula : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilSembako, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilSembako, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilSembako);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilSembako == 3) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS GARAM");
-        System.out.print("Tambahan Garam : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Garam : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilSembako, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilSembako, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilSembako);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilSembako == 4) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS Telur");
-        System.out.print("Tambahan Telur : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Telur : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilSembako, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilSembako, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilSembako);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilSembako == 5) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS Minyak");
-        System.out.print("Tambahan Minyak : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Minyak : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilSembako, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilSembako, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilSembako);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      }
-    } else if (pilihan == 2) {
-      for (int i = 0; i < rakKosmetik.length; i++) {
-        String element = rakKosmetik[i];
-        System.out.println("" + (i + 1) + " " + element);
-      }
-      //pemilihan item
-      int pilKosmetik = print.nextInt();
-      if (pilKosmetik == 1) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS FACEWASH");
-        System.out.print("Tambahan Facewash : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Facewash : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilKosmetik, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilKosmetik, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilKosmetik);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilKosmetik == 2) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS Toner");
-        System.out.print("Tambahan Toner : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Toner : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilKosmetik, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilKosmetik, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilKosmetik);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilKosmetik == 3) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS Serum");
-        System.out.print("Tambahan Serum : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Serum : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilKosmetik, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilKosmetik, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilKosmetik);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilKosmetik == 4) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS Sunscreen");
-        System.out.print("Tambahan Sunscreen : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Sunscreen : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilKosmetik, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilKosmetik, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilKosmetik);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilKosmetik == 5) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS Lipcream");
-        System.out.print("Tambahan Lipcream : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Lipcream : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilKosmetik, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilKosmetik, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilKosmetik);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      }
-    } else if (pilihan == 3) {
-      for (int i = 0; i < rakPakaian.length; i++) {
-        String element = rakPakaian[i];
-        System.out.println("" + (i + 1) + " " + element);
-      }
-      //pemilihan item
-      int pilPakaian = print.nextInt();
-      if (pilPakaian == 1) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS FACEWASH");
-        System.out.print("Tambahan Facewash : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Facewash : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilPakaian, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilPakaian, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilPakaian);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilPakaian == 2) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS FACEWASH");
-        System.out.print("Tambahan Facewash : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Facewash : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilPakaian, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilPakaian, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilPakaian);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilPakaian == 3) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS FACEWASH");
-        System.out.print("Tambahan Facewash : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Facewash : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilPakaian, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilPakaian, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilPakaian);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilPakaian == 4) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS FACEWASH");
-        System.out.print("Tambahan Facewash : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Facewash : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilPakaian, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilPakaian, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilPakaian);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      } else if (pilPakaian == 5) {
-        //perhitungan stok
-        System.out.println("===============================================");
-        System.out.println("\t INVENTARIS FACEWASH");
-        System.out.print("Tambahan Facewash : ");
-        jmlMasuk = print.nextInt();
-        stok = 34;
-        tambahStok(stok, jmlMasuk);
-        System.out.print("Pengambilan Facewash : ");
-        jmlKeluar = print.nextInt();
-        kurangStok(pilPakaian, jmlKeluar);
-        // jika pengambilan barang minus
-        if (kurangStok(pilihan, jmlKeluar) < 0) {
-          System.out.print(
-            "Stok tidak mencukupi, Apakah anda ingin mengulangi pengambilan(y/n) : "
-          );
-          String konfir = print.nextLine();
-          if (konfir.equalsIgnoreCase("y")) {
-            kurangStok(pilPakaian, jmlKeluar);
-          } else if (konfir.equalsIgnoreCase("n")) {
-            System.out.println("terimakasih");
-            return;
-          }
-        }
-        //perhitungan valuasi item
-        System.out.print("Masukkan harga");
-        harga = print.nextInt();
-        hitungValuasi(harga, pilPakaian);
-        System.out.println("Tanggal hari ini:" + tanggalHariIni);
-        System.out.println("Tanggal hari kadaluwarsa: " + tanggalKadaluwarsa);
-      }
-    }
-    print.close();
-  }
-
   static int tambahStok(int stok, int jmlMasuk) {
     int hasil = stok + jmlMasuk;
     System.out.println(" Jumlah stok saat ini adalah : " + hasil);
@@ -628,5 +127,57 @@ public class SistemGudangA1 {
     int val = harga * kurangStok(angka, angka);
     System.out.println("Valuasi : " + val);
     return val;
+  }
+  static {
+    print = new Scanner(System.in);
+    int pilihan;
+    String rakSembako [][] = {
+      {"beras", "garam", "gula","telur","minyak"},
+      {"34","44","24","22","33"},
+      {"12.000", "2.000", "8.000", "27.000","24.000"}
+    };
+    String rakKosmetik[][] = {
+      {"facewash","toner","serum","sunsreen","lipcream"},
+      {"30","28","40","25","31"},
+      {"20.000","25.000","40.000","40.000","28.000"}
+    };
+    String rakPakaian[][] ={
+      {"kaos","kemeja","rok","celana jeans","jaket"},
+      {"50","60","45","51","40"},
+      {"60.000","100.000","80.000","120.000","150.000"}
+    };
+  } 
+  static void tampilItemSembako(){
+    System.out.println("==============================");
+    System.out.println("|     TAMPIL ITEM SEMBAKO    |");
+    System.out.println("==============================");
+    System.out.println("|   1. Beras\t\t\t |");
+    System.out.println("|   2. Garam\t\t\t |");
+    System.out.println("|   3. Gula\t\t\t |");
+    System.out.println("|   4. Telur\t\t\t     |");
+    System.out.println("|   5. Minyak\t\t\t |");
+    System.out.println("==============================");
+  }
+  static void tampilItemKosmetik(){
+    System.out.println("==============================");
+    System.out.println("|     TAMPIL ITEM KOSMETIK    |");
+    System.out.println("==============================");
+    System.out.println("|   1. Facewash\t\t\t |");
+    System.out.println("|   2. Toner\t\t\t |");
+    System.out.println("|   3. Serum\t\t\t |");
+    System.out.println("|   4. Sunscreen\t\t\t     |");
+    System.out.println("|   5. Lipcream\t\t\t |");
+    System.out.println("==============================");
+  }
+  static void tampilItemPakaian(){
+    System.out.println("==============================");
+    System.out.println("|     TAMPIL ITEM PAKAIAN    |");
+    System.out.println("==============================");
+    System.out.println("|   1. Kaos\t\t\t |");
+    System.out.println("|   2. Kemeja\t\t\t |");
+    System.out.println("|   3. Rok\t\t\t |");
+    System.out.println("|   4. Celana Jeans\t\t\t     |");
+    System.out.println("|   5. Jaket\t\t\t |");
+    System.out.println("==============================");
   }
 }
