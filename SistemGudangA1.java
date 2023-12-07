@@ -3,6 +3,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class SistemGudangA1 {
+  static String[] rakSembako;
+  static String[] rakKosmetik;
+  static String[] rakPakaian;
+  static int stok;
+  static int stokBaru;
+  static int harga;
+  static int valuasi;
+  static int totalVal;
+  static int jmlMasuk;
+  static int jmlKeluar;
+  static int hasil;
+  static int jamMasuk;
+  static int jamKeluar;
 
   public static void Title() {
     System.out.println("=================SISTEM GUDANG A1====================");
@@ -140,21 +153,12 @@ public class SistemGudangA1 {
   static {
     print = new Scanner(System.in);
     int pilihan;
-    String rakSembako [][] = {
-      {"beras", "garam", "gula","telur","minyak"},
-      {"34","44","24","22","33"},
-      {"12.000", "2.000", "8.000", "27.000","24.000"}
-    };
-    String rakKosmetik[][] = {
-      {"facewash","toner","serum","sunsreen","lipcream"},
-      {"30","28","40","25","31"},
-      {"20.000","25.000","40.000","40.000","28.000"}
-    };
-    String rakPakaian[][] ={
-      {"kaos","kemeja","rok","celana jeans","jaket"},
-      {"50","60","45","51","40"},
-      {"60.000","100.000","80.000","120.000","150.000"}
-    };
+    String rakSembako [] =
+      {"beras", "garam", "gula","telur","minyak"};
+    String rakKosmetik[] = 
+      {"facewash","toner","serum","sunsreen","lipcream"};
+    String rakPakaian[] =
+      {"kaos","kemeja","rok","celana jeans","jaket"};
   } 
   static void tampilItemSembako(){
     System.out.println("==============================");
@@ -193,11 +197,11 @@ public class SistemGudangA1 {
     System.out.println("==============================");
     System.out.println("|     TAMPIL FITUR GUDANG    |");
     System.out.println("==============================");
-    System.out.println("|   1. Tambah Stok\t\t\t |");
-    System.out.println("|   2. Kurang Stok\t\t\t |");
-    System.out.println("|   3. Hitung Valuasi\t\t\t |");
-    System.out.println("|   4. Surat Jalans\t\t\t |");
-    System.out.println("|   5. Exit\t\t\t |");
+    System.out.println("|   1. Tambah Stok\t\t|");
+    System.out.println("|   2. Kurang Stok\t\t|");
+    System.out.println("|   3. Hitung Valuasi\t\t|");
+    System.out.println("|   4. Surat Jalan\t\t|");
+    System.out.println("|   5. Exit\t\t|");
     System.out.println("==============================");
   }
 }
