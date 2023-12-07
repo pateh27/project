@@ -18,18 +18,27 @@ public class SistemGudangA1 {
     // percobaan login
     login();
     tampilMenu();
-    pilihan = print.nextInt();
-    int choose = 0;
-    choose = Integer.parseInt(print.nextLine());
-      switch(choose) {
+      switch(pilihan) {
       case 1:
         tampilItemSembako();
+        System.out.println();
+        System.out.println("====================Pilih Item=======================");
+        features();
+        break;
       case 2:
         tampilItemKosmetik();
+        System.out.println();
+        System.out.println("====================Pilih Item=======================");
+        features();
+        break;
       case 3:
         tampilItemPakaian();
+        System.out.println();
+        System.out.println("====================Pilih Item=======================");
+        features();
+        break;
       }
-    }
+  }
   
   public static void tampilMenu() {
     System.out.println("====================Menu Utama=======================");
@@ -151,33 +160,44 @@ public class SistemGudangA1 {
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM SEMBAKO    |");
     System.out.println("==============================");
-    System.out.println("|   1. Beras\t\t\t |");
-    System.out.println("|   2. Garam\t\t\t |");
-    System.out.println("|   3. Gula\t\t\t |");
-    System.out.println("|   4. Telur\t\t\t     |");
-    System.out.println("|   5. Minyak\t\t\t |");
+    System.out.println("|   1. Beras\t\t\t|");
+    System.out.println("|   2. Garam\t\t\t|");
+    System.out.println("|   3. Gula\t\t\t|");
+    System.out.println("|   4. Telur\t\t\t|");
+    System.out.println("|   5. Minyak\t\t\t|");
     System.out.println("==============================");
   }
   static void tampilItemKosmetik(){
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM KOSMETIK    |");
     System.out.println("==============================");
-    System.out.println("|   1. Facewash\t\t\t |");
-    System.out.println("|   2. Toner\t\t\t |");
-    System.out.println("|   3. Serum\t\t\t |");
-    System.out.println("|   4. Sunscreen\t\t\t     |");
-    System.out.println("|   5. Lipcream\t\t\t |");
+    System.out.println("|   1. Facewash\t\t\t|");
+    System.out.println("|   2. Toner\t\t\t|");
+    System.out.println("|   3. Serum\t\t\t|");
+    System.out.println("|   4. Sunscreen\t\t\t|");
+    System.out.println("|   5. Lipcream\t\t\t|");
     System.out.println("==============================");
   }
   static void tampilItemPakaian(){
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM PAKAIAN    |");
     System.out.println("==============================");
-    System.out.println("|   1. Kaos\t\t\t |");
-    System.out.println("|   2. Kemeja\t\t\t |");
-    System.out.println("|   3. Rok\t\t\t |");
-    System.out.println("|   4. Celana Jeans\t\t\t     |");
-    System.out.println("|   5. Jaket\t\t\t |");
+    System.out.println("|   1. Kaos\t\t\t|");
+    System.out.println("|   2. Kemeja\t\t\t|");
+    System.out.println("|   3. Rok\t\t\t|");
+    System.out.println("|   4. Celana Jeans\t\t\t|");
+    System.out.println("|   5. Jaket\t\t\t|");
+    System.out.println("==============================");
+  }
+  static void features(){
+    System.out.println("==============================");
+    System.out.println("|     TAMPIL FITUR GUDANG    |");
+    System.out.println("==============================");
+    System.out.println("|   1. Tambah Stok\t\t\t |");
+    System.out.println("|   2. Kurang Stok\t\t\t |");
+    System.out.println("|   3. Hitung Valuasi\t\t\t |");
+    System.out.println("|   4. Surat Jalans\t\t\t |");
+    System.out.println("|   5. Exit\t\t\t |");
     System.out.println("==============================");
   }
 }
