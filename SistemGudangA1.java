@@ -7,6 +7,7 @@ public class SistemGudangA1 {
   static String[] rakKosmetik;
   static String[] rakPakaian;
   static int stok;
+  static int tambahStok;
   static int stokBaru;
   static int harga;
   static int valuasi;
@@ -37,18 +38,21 @@ public class SistemGudangA1 {
         System.out.println();
         System.out.println("====================Pilih Item=======================");
         features();
+        tambahStok();
         break;
       case 2:
         tampilItemKosmetik();
         System.out.println();
         System.out.println("====================Pilih Item=======================");
         features();
+        tambahStok();
         break;
       case 3:
         tampilItemPakaian();
         System.out.println();
         System.out.println("====================Pilih Item=======================");
         features();
+        tambahStok();
         break;
       }
   }
@@ -204,4 +208,20 @@ public class SistemGudangA1 {
     System.out.println("|   5. Exit\t\t|");
     System.out.println("==============================");
   }
+  static void tambahStok(){
+    System.out.println("============================");
+    System.out.println("|\t\t  Tamabah Stok\t\t  |");
+    System.out.println("============================");
+    System.out.println("|     0. Keluar\t\t\t\t |");
+    
+    System.out.println("============================");
+    System.out.println("Tambah Stok : ");
+    tambahStok = Integer.parseInt(print.nextLine());
+    System.out.println("----------------------------");
+    System.out.println("");
+    System.out.println();
+    
+  }
+
 }
+
