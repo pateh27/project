@@ -6,6 +6,10 @@ public class SistemGudangA1 {
   static String[] rakSembako;
   static String[] rakKosmetik;
   static String[] rakPakaian;
+  static int[][] stokBarang;
+  // static int[] stokSembako;
+  // static int[] stokKosmetik;
+  // static int[] stokPakain;
   static int stok;
   static int tambahStok;
   static int stokBaru;
@@ -31,30 +35,45 @@ public class SistemGudangA1 {
     Title();
     // percobaan login
     login();
-    tampilMenu();
-      switch(pilihan) {
+    //tampilMenu();
+    
+    boolean Exit = true;
+    int choose = 0;
+    
+    while (choose !=5) {
+      tampilMenu();
+      System.out.println("==============================");
+      System.out.println("|     TAMPIL FITUR GUDANG    |");
+      System.out.println("==============================");
+      System.out.println("|   1. Tambah Stok\t\t|");
+      System.out.println("|   2. Kurang Stok\t\t|");
+      System.out.println("|   3. Hitung Valuasi\t\t|");
+      System.out.println("|   4. Surat Jalan\t\t|");
+      System.out.println("|   5. Exit\t\t|");
+      System.out.println("==============================");
+      System.out.print("Pilih menu : ");
+      choose = print.nextInt();
+      System.out.println("------------------------------");
+      System.out.println();
+      System.out.println();
+      switch(choose) {
       case 1:
-        tampilItemSembako();
-        System.out.println();
-        System.out.println("====================Pilih Item=======================");
-        features();
         tambahStok();
         break;
       case 2:
-        tampilItemKosmetik();
-        System.out.println();
-        System.out.println("====================Pilih Item=======================");
-        features();
-        tambahStok();
+        kurangStok();
         break;
       case 3:
-        tampilItemPakaian();
-        System.out.println();
-        System.out.println("====================Pilih Item=======================");
-        features();
-        tambahStok();
+        hitungValuasi();
+        break;
+      case 4:
+        suratjalan();
+      case 5:
+        System.out.println("~~~~~~~~~~~~~~~~~~~\n~~~Keluaaaarrrrrr~~~\n~~~~~~~~~~~~~~~~~~");
+        Exit = true;
         break;
       }
+    }
   }
   
   public static void tampilMenu() {
@@ -67,6 +86,7 @@ public class SistemGudangA1 {
     pilihan = print.nextInt();
     System.out.println("=====================================================");
   }
+  
   public static void tampilItem() {
     LocalDate tanggalHariIni = LocalDate.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -157,12 +177,12 @@ public class SistemGudangA1 {
   static {
     print = new Scanner(System.in);
     int pilihan;
-    String rakSembako [] =
-      {"beras", "garam", "gula","telur","minyak"};
-    String rakKosmetik[] = 
-      {"facewash","toner","serum","sunsreen","lipcream"};
-    String rakPakaian[] =
-      {"kaos","kemeja","rok","celana jeans","jaket"};
+    rakSembako = new String[]{"", "beras", "garam", "gula","telur","minyak"};
+    // stokSembako = new int[]{0, 45, 30, 40, 60, 50};
+    rakKosmetik = new String[]{"", "facewash","toner","serum","sunsreen","lipcream"};
+    // stokKosmetik = new int[]{0,50, 27, 30, 45, 41};
+    rakPakaian = new String[]{"","kaos","kemeja","rok","celana jeans","jaket"};
+    // stokPakaian = new int[]{0, 37, 45, 67, 34, 54};
   } 
   static void tampilItemSembako(){
     System.out.println("==============================");
@@ -174,6 +194,8 @@ public class SistemGudangA1 {
     System.out.println("|   4. Telur\t\t\t|");
     System.out.println("|   5. Minyak\t\t\t|");
     System.out.println("==============================");
+    System.out.print("| Pilih barang : ");
+    pilihan = print.nextInt();
   }
   static void tampilItemKosmetik(){
     System.out.println("==============================");
@@ -185,6 +207,7 @@ public class SistemGudangA1 {
     System.out.println("|   4. Sunscreen\t\t\t|");
     System.out.println("|   5. Lipcream\t\t\t|");
     System.out.println("==============================");
+    pilihan = print.nextInt();
   }
   static void tampilItemPakaian(){
     System.out.println("==============================");
@@ -197,31 +220,39 @@ public class SistemGudangA1 {
     System.out.println("|   5. Jaket\t\t\t|");
     System.out.println("==============================");
   }
-  static void features(){
-    System.out.println("==============================");
-    System.out.println("|     TAMPIL FITUR GUDANG    |");
-    System.out.println("==============================");
-    System.out.println("|   1. Tambah Stok\t\t|");
-    System.out.println("|   2. Kurang Stok\t\t|");
-    System.out.println("|   3. Hitung Valuasi\t\t|");
-    System.out.println("|   4. Surat Jalan\t\t|");
-    System.out.println("|   5. Exit\t\t|");
-    System.out.println("==============================");
+  
+  
+  static int tambahStok(){
+    int jenisBarang, jumlahBarang;
+    tampilJenisBarang();
+    jenisBarang = print.nextInt();
+    System.out.print("Masukkan jumlah barang: ");
+    jumlahBarang = print.nextInt();
+    tambahStokBarang(jenisBarang, jumlahBarang);
+    return stokBaru;
   }
-  static void tambahStok(){
-    System.out.println("============================");
-    System.out.println("|\t\t  Tamabah Stok\t\t  |");
-    System.out.println("============================");
-    System.out.println("|     0. Keluar\t\t\t\t |");
-    
-    System.out.println("============================");
-    System.out.println("Tambah Stok : ");
-    tambahStok = Integer.parseInt(print.nextLine());
-    System.out.println("----------------------------");
-    System.out.println("");
+
+  static void kurangStok(){
     System.out.println();
-    
   }
+
+  static void hitungValuasi(){
+    System.out.println();
+  }
+
+  static void suratjalan(){
+    System.out.println();
+  }
+ 
+  
+  static void tambahStokBarang(int jenisBarang, int jumlahBarang) {
+    if (jenisBarang >= 1 && jenisBarang <= 15) {
+        stokBarang[jenisBarang - 1][1] += jumlahBarang;
+        System.out.println("Stok berhasil ditambahkan!");
+    } else {
+        System.out.println("Barang tidak ditemukan!");
+    }
+}
 
 }
 
