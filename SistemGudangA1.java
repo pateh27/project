@@ -11,16 +11,13 @@ public class SistemGudangA1 {
   // static int[] stokKosmetik;
   // static int[] stokPakain;
   static int stok;
-  static int tambahStok;
   static int stokBaru;
   static int harga;
   static int valuasi;
   static int totalVal;
   static int jmlMasuk;
   static int jmlKeluar;
-  static int hasil;
-  static int jamMasuk;
-  static int jamKeluar;
+  static int stokBaru;
 
   public static void Title() {
     System.out.println("=================SISTEM GUDANG A1====================");
@@ -31,16 +28,17 @@ public class SistemGudangA1 {
 
   public static Scanner print = new Scanner(System.in);
   public static int pilihan;
+
   public static void main(String[] args) {
     Title();
     // percobaan login
     login();
-    //tampilMenu();
-    
+    // tampilMenu();
+
     boolean Exit = true;
     int choose = 0;
-    
-    while (choose !=5) {
+
+    while (choose != 5) {
       tampilMenu();
       System.out.println("==============================");
       System.out.println("|     TAMPIL FITUR GUDANG    |");
@@ -56,26 +54,26 @@ public class SistemGudangA1 {
       System.out.println("------------------------------");
       System.out.println();
       System.out.println();
-      switch(choose) {
-      case 1:
-        tambahStok();
-        break;
-      case 2:
-        kurangStok();
-        break;
-      case 3:
-        hitungValuasi();
-        break;
-      case 4:
-        suratjalan();
-      case 5:
-        System.out.println("~~~~~~~~~~~~~~~~~~~\n~~~Keluaaaarrrrrr~~~\n~~~~~~~~~~~~~~~~~~");
-        Exit = true;
-        break;
+      switch (choose) {
+        case 1:
+          tambahStok(stok, jmlMasuk);
+          break;
+        case 2:
+          kurangStok(stokBaru, jmlKeluar);
+          break;
+        case 3:
+          hitungValuasi(stokBaru, harga);
+          break;
+        case 4:
+          suratjalan();
+        case 5:
+          System.out.println("~~~~~~~~~~~~~~~~~~~\n~~~Keluaaaarrrrrr~~~\n~~~~~~~~~~~~~~~~~~");
+          Exit = true;
+          break;
       }
     }
   }
-  
+
   public static void tampilMenu() {
     System.out.println("====================Menu Utama=======================");
     System.out.println("| \t 1. RAK SEMBAKO                             |");
@@ -86,7 +84,7 @@ public class SistemGudangA1 {
     pilihan = print.nextInt();
     System.out.println("=====================================================");
   }
-  
+
   public static void tampilItem() {
     LocalDate tanggalHariIni = LocalDate.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -96,73 +94,84 @@ public class SistemGudangA1 {
     System.out.println("====================Pilih Item=======================");
 
   }
+
   static void login() {
-          int maksPercobaan = 3;
+    int maksPercobaan = 3;
     for (int i = 1; i <= maksPercobaan; i++) {
       System.out.print(" Username : ");
       String usnLogin = print.nextLine();
-      //   String usnLogin = "admin";
+      // String usnLogin = "admin";
       System.out.print(" PIN      : ");
       String pinLogin = print.nextLine();
-      //   String pinLogin = "gudang123";
+      // String pinLogin = "gudang123";
       // cek usn dan pin
-      if (
-        usnLogin.equalsIgnoreCase("admin") &&
-        pinLogin.equalsIgnoreCase("gudang123")
-      ) {
+      if (usnLogin.equalsIgnoreCase("admin") &&
+          pinLogin.equalsIgnoreCase("gudang123")) {
         System.out.println(
-          "====================================================="
-        );
+            "=====================================================");
         System.out.println("| Login Berhasil sebagai Admin \t\t\t   |");
         System.out.println(
-          "====================================================="
-        );
+            "=====================================================");
         System.out.println();
         break;
-      } else if (
-        usnLogin.equalsIgnoreCase("owner") && pinLogin.equalsIgnoreCase("11924")
-      ) {
+      } else if (usnLogin.equalsIgnoreCase("owner") && pinLogin.equalsIgnoreCase("11924")) {
         System.out.println("Login Berhasil sebagai Owner");
         break;
       } else {
         System.out.println(
-          "====================================================="
-        );
+            "=====================================================");
         System.out.println(
-          "| Login Gagal. Sisa percobaan : " + (maksPercobaan - i) + "\t\t|"
-        );
+            "| Login Gagal. Sisa percobaan : " + (maksPercobaan - i) + "\t\t|");
         System.out.println(
-          "====================================================="
-        );
+            "=====================================================");
         if (i == maksPercobaan) {
           System.out.println(
-            "| Anda telah mencapai batas percobaan. Akun diblokir|"
-          );
+              "| Anda telah mencapai batas percobaan. Akun diblokir|");
           System.out.println(
-            "====================================================="
-          );
+              "=====================================================");
           return;
         }
       }
     }
   }
+
   static int tambahStok(int stok, int jmlMasuk) {
-    int hasil = stok + jmlMasuk;
-    System.out.println(" Jumlah stok saat ini adalah : " + hasil);
-    return hasil;
+    System.out.print("Masukkan stok saat ini: ");
+    stok = print.nextInt();
+    System.out.print("Masukkan tambahan jumlah: ");
+    jmlMasuk = print.nextInt();
+    int stokBaru = stok + jmlMasuk;
+    System.out.println(" Jumlah stok saat ini adalah : " + stokBaru);
+    return stokBaru;
   }
 
   static int kurangStok(int a, int b) {
-    //Scanner print = new Scanner(System.in);
-    //System.out.print("Pengambilan Stok : ");
-    //int jmlKeluar = print.nextInt();
+    // Scanner print = new Scanner(System.in);
+    // System.out.print("Pengambilan Stok : ");
+    // int jmlKeluar = print.nextInt();
     // int kurang = tambahStok(a, b) - jmlKeluar;
     int stokBaru = 0;
     if (a > b) {
+      System.out.print("Masukkan jumlah pengambilan : ");
+      b = print.nextInt();
       stokBaru = a - b;
+      System.out.println("Jumlah stok saat ini: "+stokBaru);
     } else {
-      System.out.println("Stok tidak cukup");
+      System.err.println("Stok tidak cukup");
       stokBaru = a;
+      System.err.print("Silahkan mengulang (y/n): ");
+      String ulang = print.nextLine();
+      if(ulang.equalsIgnoreCase("y")){
+        System.out.print("Masukkan jumlah pengambilan : ");
+        b = print.nextInt();
+        stokBaru = a - b;
+        System.out.println("Jumlah stok saat ini: "+stokBaru);
+      }else{
+        System.out.println("~~~~~~~~~~~~~~~~~~~\n~~~Keluaaaarrrrrr~~~\n~~~~~~~~~~~~~~~~~~");
+        break;
+      }else{
+        System.err.println("Inputan anda tidak valid!!!!");
+      }
     }
 
     System.out.println("Jumlah stok saat ini adalah : " + stokBaru);
@@ -170,21 +179,25 @@ public class SistemGudangA1 {
   }
 
   static int hitungValuasi(int harga, int angka) {
-    int val = harga * kurangStok(angka, angka);
+    System.out.print("Masukkan harga barang: ");
+    harga = print.nextInt();
+    int val = stokBaru * harga;
     System.out.println("Valuasi : " + val);
     return val;
   }
+
   static {
     print = new Scanner(System.in);
     int pilihan;
-    rakSembako = new String[]{"", "beras", "garam", "gula","telur","minyak"};
+    rakSembako = new String[] { "", "beras", "garam", "gula", "telur", "minyak" };
     // stokSembako = new int[]{0, 45, 30, 40, 60, 50};
-    rakKosmetik = new String[]{"", "facewash","toner","serum","sunsreen","lipcream"};
+    rakKosmetik = new String[] { "", "facewash", "toner", "serum", "sunsreen", "lipcream" };
     // stokKosmetik = new int[]{0,50, 27, 30, 45, 41};
-    rakPakaian = new String[]{"","kaos","kemeja","rok","celana jeans","jaket"};
+    rakPakaian = new String[] { "", "kaos", "kemeja", "rok", "celana jeans", "jaket" };
     // stokPakaian = new int[]{0, 37, 45, 67, 34, 54};
-  } 
-  static void tampilItemSembako(){
+  }
+
+  static void tampilItemSembako() {
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM SEMBAKO    |");
     System.out.println("==============================");
@@ -197,7 +210,8 @@ public class SistemGudangA1 {
     System.out.print("| Pilih barang : ");
     pilihan = print.nextInt();
   }
-  static void tampilItemKosmetik(){
+
+  static void tampilItemKosmetik() {
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM KOSMETIK    |");
     System.out.println("==============================");
@@ -209,7 +223,8 @@ public class SistemGudangA1 {
     System.out.println("==============================");
     pilihan = print.nextInt();
   }
-  static void tampilItemPakaian(){
+
+  static void tampilItemPakaian() {
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM PAKAIAN    |");
     System.out.println("==============================");
@@ -220,38 +235,8 @@ public class SistemGudangA1 {
     System.out.println("|   5. Jaket\t\t\t|");
     System.out.println("==============================");
   }
-  
-  
-  static int tambahStok(){
-    int jenisBarang, jumlahBarang;
-    jenisBarang = print.nextInt();
-    System.out.print("Masukkan jumlah barang: ");
-    jumlahBarang = print.nextInt();
-    tambahStokBarang(jenisBarang, jumlahBarang);
-    return stokBaru;
-  }
 
-  static void kurangStok(){
+  static void suratjalan() {
     System.out.println();
   }
-
-  static void hitungValuasi(){
-    System.out.println();
-  }
-
-  static void suratjalan(){
-    System.out.println();
-  }
- 
-  
-  static void tambahStokBarang(int jenisBarang, int jumlahBarang) {
-    if (jenisBarang >= 1 && jenisBarang <= 15) {
-        stokBarang[jenisBarang - 1][1] += jumlahBarang;
-        System.out.println("Stok berhasil ditambahkan!");
-    } else {
-        System.out.println("Barang tidak ditemukan!");
-    }
 }
-
-}
-
