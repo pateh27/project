@@ -224,7 +224,6 @@ public class SistemGudangA1 {
   
   static int tambahStok(){
     int jenisBarang, jumlahBarang;
-    tampilJenisBarang();
     jenisBarang = print.nextInt();
     System.out.print("Masukkan jumlah barang: ");
     jumlahBarang = print.nextInt();
