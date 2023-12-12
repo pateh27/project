@@ -56,7 +56,7 @@ public class SistemGudangA1 {
       System.out.println();
       switch (choose) {
         case 1:
-          tambahStok(stok, jmlMasuk);
+          tambahStok();
           break;
         case 2:
           kurangStok(stokBaru);
@@ -147,25 +147,38 @@ public class SistemGudangA1 {
     }
   }
 
-  static int tambahStok(int stok, int jmlMasuk) {
-    System.out.print("Masukkan stok saat ini: ");
-    stok = print.nextInt();
-    System.out.print("Masukkan tambahan jumlah: ");
-    jmlMasuk = print.nextInt();
-    stokBaru = stok + jmlMasuk;
-    System.out.println(" Jumlah stok saat ini adalah : " + stokBaru);
+  static int tambahStok() {
+    System.out.println(stok);
+    if (stok == 0) {
+      System.out.print("Masukkan stok : ");
+      stok = print.nextInt();
+      System.out.print("Mau nambah stok (y/n): ");
+      String ulang = print.next();
+      if (ulang.equalsIgnoreCase("y")) {
+        System.out.print("Masukkan tambahan jumlah: ");
+        jmlMasuk = print.nextInt();
+        stokBaru = stok + jmlMasuk;
+        stok += jmlMasuk;
+        System.out.println(" Jumlah stok saat ini adalah : " + stokBaru);
+      } else {
+        stokBaru = stok + jmlMasuk;
+        stok += jmlMasuk;
+        System.out.println(" Jumlah stok saat ini adalah : " + stokBaru);
+      }
+    } else {
+      System.out.print("Masukkan tambahan jumlah: ");
+      jmlMasuk = print.nextInt();
+      stokBaru = stok + jmlMasuk;
+      stok += jmlMasuk;
+      System.out.println(" Jumlah stok saat ini adalah : " + stokBaru);
+    }
+
     return stokBaru;
   }
 
   static int kurangStok(int a) {
     System.out.println(a);
-    // Scanner print = new Scanner(System.in);
-    // System.out.print("Pengambilan Stok : ");
-    // int jmlKeluar = print.nextInt();
-    // int kurang = tambahStok(a, b) - jmlKeluar;
     int stokBaru = 0;
-    // String ulang = ;
-    // if (a > b) {
     System.out.print("Masukkan jumlah pengambilan : ");
     int b = print.nextInt();
     if (b > a) {
@@ -173,19 +186,16 @@ public class SistemGudangA1 {
       stokBaru = a;
     } else {
       stokBaru = a - b;
+      stok = stokBaru;
       System.out.println("Jumlah stok saat ini: " + stokBaru);
     }
-    // stokBaru = a - b;
-    // System.out.println("Jumlah stok saat ini: "+stokBaru);
-    // stokBaru = a - b;
-    // System.out.println("Jumlah stok saat ini: "+stokBaru);
-    // } else {
-    System.out.print("Silahkan mengulang (y/n): ");
+    System.out.print("Mau mengambil stok lagi (y/n): ");
     String ulang = print.next();
     if (ulang.equalsIgnoreCase("y")) {
       System.out.print("Masukkan jumlah pengambilan : ");
       b = print.nextInt();
       stokBaru = a - b;
+      stok -= b;
       System.out.println("Jumlah stok saat ini: " + stokBaru);
     } else {
       System.out.println(
