@@ -273,6 +273,7 @@ public class SistemGudangA1 {
 
   static void suratjalan() {
     int jenisBarang, jumlahBarang;
+    System.out.println("Masukkan nama barang: ");
     jenisBarang = print.nextInt();
     System.out.print("Masukkan jumlah barang: ");
     jumlahBarang = print.nextInt();
