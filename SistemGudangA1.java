@@ -7,17 +7,18 @@ public class SistemGudangA1 {
   static String[] rakSembako;
   static String[] rakKosmetik;
   static String[] rakPakaian;
-  static int[][] stokBarang;
+  // static int[][] stokBarang;
   // static int[] stokSembako;
   // static int[] stokKosmetik;
   // static int[] stokPakain;
   static int stok;
+  static int stokBarang;
   static int stokBaru;
   static int harga;
   static int valuasi;
   static int totalVal;
   static int jmlMasuk;
-  static int jmlKeluar;
+  static int b;
 
   public static void Title() {
     System.out.println("=================SISTEM GUDANG A1====================");
@@ -40,36 +41,45 @@ public class SistemGudangA1 {
 
     while (choose != 5) {
       tampilMenu();
+      switch (pilihan) {
+        case 1:
+          tampilItemSembako();
+          break;
+        case 2:
+          tampilItemKosmetik();
+        case 3:
+          tampilItemPakaian();
+        default:
+          break;
+      }
       System.out.println("==============================");
       System.out.println("|     TAMPIL FITUR GUDANG    |");
       System.out.println("==============================");
-      System.out.println("|   1. Tambah Stok\t\t|");
-      System.out.println("|   2. Kurang Stok\t\t|");
-      System.out.println("|   3. Hitung Valuasi\t\t|");
-      System.out.println("|   4. Surat Jalan\t\t|");
-      System.out.println("|   5. Exit\t\t|");
+      System.out.println("|   1. Tambah Stok           |");
+      System.out.println("|   2. Kurang Stok           |");
+      System.out.println("|   3. Hitung Valuasi        |");
+      System.out.println("|   4. Surat Jalan           |");
+      System.out.println("|   5. Exit                   |");
       System.out.println("==============================");
       System.out.print("Pilih menu : ");
       choose = print.nextInt();
       System.out.println("------------------------------");
-      System.out.println();
       System.out.println();
       switch (choose) {
         case 1:
           tambahStok();
           break;
         case 2:
-          kurangStok(stokBaru);
+          kurangStok();
           break;
         case 3:
-          hitungValuasi(stokBaru, harga);
+          hitungValuasi(harga, stokBarang);
           break;
         case 4:
           suratjalan();
         case 5:
           System.out.println(
-            "~~~~~~~~~~~~~~~~~~~\n~~~Keluaaaarrrrrr~~~\n~~~~~~~~~~~~~~~~~~"
-          );
+              "~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~");
           Exit = true;
           break;
       }
@@ -106,41 +116,30 @@ public class SistemGudangA1 {
       // String pinLogin = print.nextLine();
       String pinLogin = "gudang123";
       // cek usn dan pin
-      if (
-        usnLogin.equalsIgnoreCase("admin") &&
-        pinLogin.equalsIgnoreCase("gudang123")
-      ) {
+      if (usnLogin.equalsIgnoreCase("admin") &&
+          pinLogin.equalsIgnoreCase("gudang123")) {
         System.out.println(
-          "====================================================="
-        );
-        System.out.println("| Login Berhasil sebagai Admin \t\t\t   |");
+            "=====================================================");
+        System.out.println("| Login Berhasil sebagai Admin        |");
         System.out.println(
-          "====================================================="
-        );
+            "=====================================================");
         System.out.println();
         break;
-      } else if (
-        usnLogin.equalsIgnoreCase("owner") && pinLogin.equalsIgnoreCase("11924")
-      ) {
+      } else if (usnLogin.equalsIgnoreCase("owner") && pinLogin.equalsIgnoreCase("11924")) {
         System.out.println("Login Berhasil sebagai Owner");
         break;
       } else {
         System.out.println(
-          "====================================================="
-        );
+            "=====================================================");
         System.out.println(
-          "| Login Gagal. Sisa percobaan : " + (maksPercobaan - i) + "\t\t|"
-        );
+            "| Login Gagal. Sisa percobaan : " + (maksPercobaan - i) + " |");
         System.out.println(
-          "====================================================="
-        );
+            "=====================================================");
         if (i == maksPercobaan) {
           System.out.println(
-            "| Anda telah mencapai batas percobaan. Akun diblokir|"
-          );
+              "| Anda telah mencapai batas percobaan. Akun diblokir |");
           System.out.println(
-            "====================================================="
-          );
+              "=====================================================");
           return;
         }
       }
@@ -176,44 +175,42 @@ public class SistemGudangA1 {
     return stokBaru;
   }
 
-  static int kurangStok(int a) {
+  static int kurangStok() {
+    int a = stokBaru;
+    int stokBarang = 0;
     System.out.println(a);
-    int stokBaru = 0;
     System.out.print("Masukkan jumlah pengambilan : ");
     int b = print.nextInt();
     if (b > a) {
       System.err.println("Stok tidak cukup");
-      stokBaru = a;
-    } else {
-      stokBaru = a - b;
-      stok = stokBaru;
-      System.out.println("Jumlah stok saat ini: " + stokBaru);
+      // stokBarang = stokBaru;
+    } else if (a > b) {
+      stokBarang = a - b;
+      a -= b;
+      // stok = stokBaru;
+      System.out.println("Jumlah stok saat ini: " + stokBarang);
+      System.out.print("Mau mengambil stok lagi (y/n): ");
+      String ulang = print.next();
+      if (ulang.equalsIgnoreCase("y")) {
+        System.out.print("Masukkan jumlah pengambilan : ");
+        b = print.nextInt();
+        stokBarang = a - b;
+        a -= b;
+        System.out.println("Jumlah stok saat ini: " + stokBarang);
+      } else {
+        System.out.println(
+            "~~~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~~~");
+        System.exit(0);
+      }
+      System.out.println("Jumlah stok saat ini adalah : " + stokBarang);
     }
-    System.out.print("Mau mengambil stok lagi (y/n): ");
-    String ulang = print.next();
-    if (ulang.equalsIgnoreCase("y")) {
-      System.out.print("Masukkan jumlah pengambilan : ");
-      b = print.nextInt();
-      stokBaru = a - b;
-      stok -= b;
-      System.out.println("Jumlah stok saat ini: " + stokBaru);
-    } else {
-      System.out.println(
-        "~~~~~~~~~~~~~~~~~~~\n~~~Keluaaaarrrrrr~~~\n~~~~~~~~~~~~~~~~~~"
-      );
-      // }
-      //else{
-      //System.err.println("Inputan anda tidak valid!!!!");
-      //}
-    }
-    System.out.println("Jumlah stok saat ini adalah : " + stokBaru);
-    return stokBaru;
+    return stokBarang;
   }
 
-  static int hitungValuasi(int harga, int angka) {
+  static int hitungValuasi(int harga, int stokBarang) {
     System.out.print("Masukkan harga barang: ");
     harga = print.nextInt();
-    int val = stokBaru * harga;
+    int val = stokBarang * harga;
     System.out.println("Valuasi : " + val);
     return val;
   }
@@ -221,14 +218,11 @@ public class SistemGudangA1 {
   static {
     print = new Scanner(System.in);
     int pilihan;
-    rakSembako =
-      new String[] { "", "beras", "garam", "gula", "telur", "minyak" };
+    rakSembako = new String[] { "", "beras", "garam", "gula", "telur", "minyak" };
     // stokSembako = new int[]{0, 45, 30, 40, 60, 50};
-    rakKosmetik =
-      new String[] { "", "facewash", "toner", "serum", "sunsreen", "lipcream" };
+    rakKosmetik = new String[] { "", "facewash", "toner", "serum", "sunsreen", "lipcream" };
     // stokKosmetik = new int[]{0,50, 27, 30, 45, 41};
-    rakPakaian =
-      new String[] { "", "kaos", "kemeja", "rok", "celana jeans", "jaket" };
+    rakPakaian = new String[] { "", "kaos", "kemeja", "rok", "celana jeans", "jaket" };
     // stokPakaian = new int[]{0, 37, 45, 67, 34, 54};
   }
 
@@ -236,11 +230,11 @@ public class SistemGudangA1 {
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM SEMBAKO    |");
     System.out.println("==============================");
-    System.out.println("|   1. Beras\t\t\t|");
-    System.out.println("|   2. Garam\t\t\t|");
-    System.out.println("|   3. Gula\t\t\t|");
-    System.out.println("|   4. Telur\t\t\t|");
-    System.out.println("|   5. Minyak\t\t\t|");
+    System.out.println("|   1. Beras                 |");
+    System.out.println("|   2. Garam                 |");
+    System.out.println("|   3. Gula                  |");
+    System.out.println("|   4. Telur                 |");
+    System.out.println("|   5. Minyak                |");
     System.out.println("==============================");
     System.out.print("| Pilih barang : ");
     pilihan = print.nextInt();
@@ -250,11 +244,11 @@ public class SistemGudangA1 {
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM KOSMETIK    |");
     System.out.println("==============================");
-    System.out.println("|   1. Facewash\t\t\t|");
-    System.out.println("|   2. Toner\t\t\t|");
-    System.out.println("|   3. Serum\t\t\t|");
-    System.out.println("|   4. Sunscreen\t\t\t|");
-    System.out.println("|   5. Lipcream\t\t\t|");
+    System.out.println("|   1. Facewash               |");
+    System.out.println("|   2. Toner                  |");
+    System.out.println("|   3. Serum                  |");
+    System.out.println("|   4. Sunscreen              |");
+    System.out.println("|   5. Lipcream                |");
     System.out.println("==============================");
     pilihan = print.nextInt();
   }
@@ -263,16 +257,17 @@ public class SistemGudangA1 {
     System.out.println("==============================");
     System.out.println("|     TAMPIL ITEM PAKAIAN    |");
     System.out.println("==============================");
-    System.out.println("|   1. Kaos\t\t\t|");
-    System.out.println("|   2. Kemeja\t\t\t|");
-    System.out.println("|   3. Rok\t\t\t|");
-    System.out.println("|   4. Celana Jeans\t\t\t|");
-    System.out.println("|   5. Jaket\t\t\t|");
+    System.out.println("|   1. Kaos                   |");
+    System.out.println("|   2. Kemeja                 |");
+    System.out.println("|   3. Rok                    |");
+    System.out.println("|   4. Celana Jeans           |");
+    System.out.println("|   5. Jaket                  |");
     System.out.println("==============================");
   }
 
   static void suratjalan() {
     int jenisBarang, jumlahBarang;
+    System.out.println("Masukkan nama barang: ");
     jenisBarang = print.nextInt();
     System.out.print("Masukkan jumlah barang: ");
     jumlahBarang = print.nextInt();
@@ -284,5 +279,5 @@ public class SistemGudangA1 {
     System.out.println("|   Jumlah Barang: " + jumlahBarang);
     System.out.println("==============================");
     System.exit(0);
-  }
+  }
 }
