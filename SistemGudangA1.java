@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class SistemGudangA1 {
 
-  static String[] rakSembako;
-  static String[] rakKosmetik;
-  static String[] rakPakaian;
+  static String[][] rakSembako;
+  static String[][] rakKosmetik;
+  static String[][] rakPakaian;
   // static int[][] stokBarang;
   // static int[] stokSembako;
   // static int[] stokKosmetik;
@@ -19,6 +19,8 @@ public class SistemGudangA1 {
   static int totalVal;
   static int jmlMasuk;
   static int b;
+  static int x;
+  static int pilihItem;
 
   public static void Title() {
     System.out.println("=================SISTEM GUDANG A1====================");
@@ -59,11 +61,12 @@ public class SistemGudangA1 {
       System.out.println("|   2. Kurang Stok           |");
       System.out.println("|   3. Hitung Valuasi        |");
       System.out.println("|   4. Surat Jalan           |");
-      System.out.println("|   5. Exit                   |");
+      System.out.println("|   5. Exit                  |");
       System.out.println("==============================");
       System.out.print("Pilih menu : ");
       choose = print.nextInt();
       System.out.println("------------------------------");
+      System.out.println();
       System.out.println();
       switch (choose) {
         case 1:
@@ -73,7 +76,7 @@ public class SistemGudangA1 {
           kurangStok();
           break;
         case 3:
-          hitungValuasi(harga, stokBarang);
+          hitungValuasi();
           break;
         case 4:
           suratjalan();
@@ -154,22 +157,22 @@ public class SistemGudangA1 {
       System.out.print("Mau nambah stok (y/n): ");
       String ulang = print.next();
       if (ulang.equalsIgnoreCase("y")) {
-        System.out.print("Masukkan tambahan jumlah: ");
+        System.out.print("Masukkan tambahan x: ");
         jmlMasuk = print.nextInt();
         stokBaru = stok + jmlMasuk;
         stok += jmlMasuk;
-        System.out.println(" Jumlah stok saat ini adalah : " + stokBaru);
+        System.out.println(" x stok saat ini adalah : " + stokBaru);
       } else {
         stokBaru = stok + jmlMasuk;
         stok += jmlMasuk;
-        System.out.println(" Jumlah stok saat ini adalah : " + stokBaru);
+        System.out.println(" x stok saat ini adalah : " + stokBaru);
       }
     } else {
-      System.out.print("Masukkan tambahan jumlah: ");
+      System.out.print("Masukkan tambahan x: ");
       jmlMasuk = print.nextInt();
       stokBaru = stok + jmlMasuk;
       stok += jmlMasuk;
-      System.out.println(" Jumlah stok saat ini adalah : " + stokBaru);
+      System.out.println(" x stok saat ini adalah : " + stokBaru);
     }
 
     return stokBaru;
@@ -179,7 +182,7 @@ public class SistemGudangA1 {
     int a = stokBaru;
     int stokBarang = 0;
     System.out.println(a);
-    System.out.print("Masukkan jumlah pengambilan : ");
+    System.out.print("Masukkan x pengambilan : ");
     int b = print.nextInt();
     if (b > a) {
       System.err.println("Stok tidak cukup");
@@ -188,42 +191,76 @@ public class SistemGudangA1 {
       stokBarang = a - b;
       a -= b;
       // stok = stokBaru;
-      System.out.println("Jumlah stok saat ini: " + stokBarang);
+      System.out.println("x stok saat ini: " + stokBarang);
       System.out.print("Mau mengambil stok lagi (y/n): ");
       String ulang = print.next();
       if (ulang.equalsIgnoreCase("y")) {
-        System.out.print("Masukkan jumlah pengambilan : ");
+        System.out.print("Masukkan x pengambilan : ");
         b = print.nextInt();
         stokBarang = a - b;
         a -= b;
-        System.out.println("Jumlah stok saat ini: " + stokBarang);
+        System.out.println("x stok saat ini: " + stokBarang);
       } else {
         System.out.println(
             "~~~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~~~");
         System.exit(0);
       }
-      System.out.println("Jumlah stok saat ini adalah : " + stokBarang);
+      System.out.println("x stok saat ini adalah : " + stokBarang);
     }
     return stokBarang;
   }
 
-  static int hitungValuasi(int harga, int stokBarang) {
-    System.out.print("Masukkan harga barang: ");
-    harga = print.nextInt();
-    int val = stokBarang * harga;
-    System.out.println("Valuasi : " + val);
-    return val;
+  static int hitungValuasi() {
+    int x = stokBarang;
+    int totalValuasi = 0;
+    System.out.println(x);
+    switch (pilihan) {
+      case 1:
+        tampilItemSembako();
+        for (int i = 1; i < rakSembako.length; i++) {
+          int harga = Integer.parseInt(rakSembako[1][i]);
+          System.out.println(harga);
+          totalValuasi += harga * x;
+        }
+        break;
+      case 2:
+        tampilItemKosmetik();
+        for (int i = 1; i < rakKosmetik.length; i++) {
+          int harga = Integer.parseInt(rakKosmetik[1][i]);
+          System.out.println(harga);
+          totalValuasi = harga * x;
+        }
+        break;
+      case 3:
+        tampilItemPakaian();
+        for (int i = 1; i < rakPakaian.length; i++) {
+          int harga = Integer.parseInt(rakPakaian[1][i]);
+          System.out.println(harga);
+          totalValuasi = harga * x;
+        }
+        break;
+      default:
+        break;
+    }
+    System.out.println("Valuasi barang : " + totalValuasi);
+    return totalValuasi;
+
   }
 
   static {
     print = new Scanner(System.in);
     int pilihan;
-    rakSembako = new String[] { "", "beras", "garam", "gula", "telur", "minyak" };
-    // stokSembako = new int[]{0, 45, 30, 40, 60, 50};
-    rakKosmetik = new String[] { "", "facewash", "toner", "serum", "sunsreen", "lipcream" };
-    // stokKosmetik = new int[]{0,50, 27, 30, 45, 41};
-    rakPakaian = new String[] { "", "kaos", "kemeja", "rok", "celana jeans", "jaket" };
-    // stokPakaian = new int[]{0, 37, 45, 67, 34, 54};
+    rakSembako = new String[][] {
+        { "", "beras", "garam", "gula", "telur", "minyak" },
+        { "0", "12000", "5000", "8000", "27000", "30000" }
+    };
+    rakKosmetik = new String[][] {
+        { "", "facewash", "toner", "serum", "sunsreen", "lipcream" },
+        { "0", "35000", "25000", "60000", "45000", "40000" } };
+    rakPakaian = new String[][] {
+        { "", "kaos", "kemeja", "rok", "celana jeans", "jaket" },
+        { "0", "60000", "80000", "50000", "120000", "150000" }
+    };
   }
 
   static void tampilItemSembako() {
@@ -237,7 +274,7 @@ public class SistemGudangA1 {
     System.out.println("|   5. Minyak                |");
     System.out.println("==============================");
     System.out.print("| Pilih barang : ");
-    pilihan = print.nextInt();
+    pilihItem = print.nextInt();
   }
 
   static void tampilItemKosmetik() {
@@ -250,7 +287,7 @@ public class SistemGudangA1 {
     System.out.println("|   4. Sunscreen              |");
     System.out.println("|   5. Lipcream                |");
     System.out.println("==============================");
-    pilihan = print.nextInt();
+    pilihItem = print.nextInt();
   }
 
   static void tampilItemPakaian() {
@@ -263,21 +300,22 @@ public class SistemGudangA1 {
     System.out.println("|   4. Celana Jeans           |");
     System.out.println("|   5. Jaket                  |");
     System.out.println("==============================");
+    pilihItem = print.nextInt();
   }
 
   static void suratjalan() {
     int jenisBarang, jumlahBarang;
     System.out.println("Masukkan nama barang: ");
     jenisBarang = print.nextInt();
-    System.out.print("Masukkan jumlah barang: ");
+    System.out.print("Masukkan x barang: ");
     jumlahBarang = print.nextInt();
     print.close();
     System.out.println("==============================");
     System.out.println("|     SURAT JALAN BARANG     |");
     System.out.println("==============================");
     System.out.println("|   Nama Barang: " + (jenisBarang));
-    System.out.println("|   Jumlah Barang: " + jumlahBarang);
+    System.out.println("|   x Barang: " + jumlahBarang);
     System.out.println("==============================");
     System.exit(0);
-  }
+  }
 }
