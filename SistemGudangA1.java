@@ -19,7 +19,7 @@ public class SistemGudangA1 {
   static int totalVal;
   static int jmlMasuk;
   static int b;
-  static int x;
+  static int jumlah;
   static int pilihItem;
 
   public static void Title() {
@@ -157,22 +157,22 @@ public class SistemGudangA1 {
       System.out.print("Mau nambah stok (y/n): ");
       String ulang = print.next();
       if (ulang.equalsIgnoreCase("y")) {
-        System.out.print("Masukkan tambahan x: ");
+        System.out.print("Masukkan tambahan jumlah: ");
         jmlMasuk = print.nextInt();
         stokBaru = stok + jmlMasuk;
         stok += jmlMasuk;
-        System.out.println(" x stok saat ini adalah : " + stokBaru);
+        System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
       } else {
         stokBaru = stok + jmlMasuk;
         stok += jmlMasuk;
-        System.out.println(" x stok saat ini adalah : " + stokBaru);
+        System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
       }
     } else {
-      System.out.print("Masukkan tambahan x: ");
+      System.out.print("Masukkan tambahan jumlah: ");
       jmlMasuk = print.nextInt();
       stokBaru = stok + jmlMasuk;
       stok += jmlMasuk;
-      System.out.println(" x stok saat ini adalah : " + stokBaru);
+      System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
     }
 
     return stokBaru;
@@ -182,7 +182,7 @@ public class SistemGudangA1 {
     int a = stokBaru;
     int stokBarang = 0;
     System.out.println(a);
-    System.out.print("Masukkan x pengambilan : ");
+    System.out.print("Masukkan jumlah pengambilan : ");
     int b = print.nextInt();
     if (b > a) {
       System.err.println("Stok tidak cukup");
@@ -191,52 +191,56 @@ public class SistemGudangA1 {
       stokBarang = a - b;
       a -= b;
       // stok = stokBaru;
-      System.out.println("x stok saat ini: " + stokBarang);
+      System.out.println("jumlah stok saat ini: " + stokBarang);
       System.out.print("Mau mengambil stok lagi (y/n): ");
       String ulang = print.next();
       if (ulang.equalsIgnoreCase("y")) {
-        System.out.print("Masukkan x pengambilan : ");
+        System.out.print("Masukkan jumlah pengambilan : ");
         b = print.nextInt();
         stokBarang = a - b;
         a -= b;
-        System.out.println("x stok saat ini: " + stokBarang);
+        System.out.println("jumlah stok saat ini: " + stokBarang);
       } else {
         System.out.println(
             "~~~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~~~");
         System.exit(0);
       }
-      System.out.println("x stok saat ini adalah : " + stokBarang);
+      System.out.println("jumlah stok saat ini adalah : " + stokBarang);
     }
     return stokBarang;
   }
 
   static int hitungValuasi() {
-    int x = stokBarang;
+    int jumlah = pilihItem;
     int totalValuasi = 0;
-    System.out.println(x);
-    switch (pilihan) {
+    switch (pilihItem) {
       case 1:
         tampilItemSembako();
-        for (int i = 1; i < rakSembako.length; i++) {
+        for (int i = pilihItem; i < rakSembako.length; i++) {
           int harga = Integer.parseInt(rakSembako[1][i]);
-          System.out.println(harga);
-          totalValuasi += harga * x;
+          jumlah = Integer.parseInt(rakSembako[2][i]);
+          totalValuasi = harga * jumlah;
         }
+        System.out.println(harga + " x " + jumlah + " = " + totalValuasi);
         break;
       case 2:
         tampilItemKosmetik();
-        for (int i = 1; i < rakKosmetik.length; i++) {
+        for (int i = pilihItem; i < rakKosmetik.length; i++) {
           int harga = Integer.parseInt(rakKosmetik[1][i]);
-          System.out.println(harga);
-          totalValuasi = harga * x;
+          jumlah = Integer.parseInt(rakKosmetik[2][i]);
+          System.out.println(harga + " x " + jumlah);
+
+          totalValuasi = harga * jumlah;
         }
         break;
       case 3:
         tampilItemPakaian();
-        for (int i = 1; i < rakPakaian.length; i++) {
+        for (int i = pilihItem; i < rakPakaian.length; i++) {
           int harga = Integer.parseInt(rakPakaian[1][i]);
-          System.out.println(harga);
-          totalValuasi = harga * x;
+          jumlah = Integer.parseInt(rakPakaian[2][i]);
+          System.out.println(harga + " x " + jumlah);
+
+          totalValuasi = harga * jumlah;
         }
         break;
       default:
@@ -249,17 +253,21 @@ public class SistemGudangA1 {
 
   static {
     print = new Scanner(System.in);
-    int pilihan;
+    int pilihItem;
     rakSembako = new String[][] {
         { "", "beras", "garam", "gula", "telur", "minyak" },
-        { "0", "12000", "5000", "8000", "27000", "30000" }
+        { "0", "12000", "5000", "8000", "27000", "30000" },
+        { "0", "45", "76", "67", "56", "44" }
     };
     rakKosmetik = new String[][] {
         { "", "facewash", "toner", "serum", "sunsreen", "lipcream" },
-        { "0", "35000", "25000", "60000", "45000", "40000" } };
+        { "0", "35000", "25000", "60000", "45000", "40000" },
+        { "0", "24", "34", "43", "37", "49" }
+    };
     rakPakaian = new String[][] {
         { "", "kaos", "kemeja", "rok", "celana jeans", "jaket" },
-        { "0", "60000", "80000", "50000", "120000", "150000" }
+        { "0", "60000", "80000", "50000", "120000", "150000" },
+        { "0", "57", "66", "41", "77", "79  " }
     };
   }
 
@@ -307,14 +315,14 @@ public class SistemGudangA1 {
     int jenisBarang, jumlahBarang;
     System.out.println("Masukkan nama barang: ");
     jenisBarang = print.nextInt();
-    System.out.print("Masukkan x barang: ");
+    System.out.print("Masukkan jumlah barang: ");
     jumlahBarang = print.nextInt();
     print.close();
     System.out.println("==============================");
     System.out.println("|     SURAT JALAN BARANG     |");
     System.out.println("==============================");
     System.out.println("|   Nama Barang: " + (jenisBarang));
-    System.out.println("|   x Barang: " + jumlahBarang);
+    System.out.println("|   jumlah Barang: " + jumlahBarang);
     System.out.println("==============================");
     System.exit(0);
   }
