@@ -105,11 +105,6 @@ public class SistemGudangA1 {
   }
 
   public static void tampilItem() {
-    LocalDate tanggalHariIni = LocalDate.now();
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(6);
-    String formatTanggalKadaluwarsa = tanggalKadaluwarsa.format(formatter);
-    System.out.println();
     System.out.println("====================Pilih Item=======================");
   }
 
@@ -117,11 +112,11 @@ public class SistemGudangA1 {
     int maksPercobaan = 3;
     for (int i = 1; i <= maksPercobaan; i++) {
       System.out.print(" Username : ");
-      // String usnLogin = print.nextLine();
-      String usnLogin = "admin";
+      String usnLogin = print.nextLine();
+      // String usnLogin = "admin";
       System.out.print(" PIN      : ");
-      // String pinLogin = print.nextLine();
-      String pinLogin = "gudang123";
+      String pinLogin = print.nextLine();
+      // String pinLogin = "gudang123";
       // cek usn dan pin
       if (usnLogin.equalsIgnoreCase("admin") &&
           pinLogin.equalsIgnoreCase("gudang123")) {
@@ -358,13 +353,13 @@ public class SistemGudangA1 {
     };
     rakKosmetik = new String[][] {
         { "", "facewash", "toner", "serum", "sunsreen", "lipcream" },
-        { "0", "35000", "25000", "60000", "45000", "40000" },
-        { "0", "24", "34", "43", "37", "49" }
+        { "", "35000", "25000", "60000", "45000", "40000" },
+        { "", "24", "34", "43", "37", "49" }
     };
     rakPakaian = new String[][] {
         { "", "kaos", "kemeja", "rok", "celana jeans", "jaket" },
-        { "0", "60000", "80000", "50000", "120000", "150000" },
-        { "0", "57", "66", "41", "77", "79  " }
+        { "", "60000", "80000", "50000", "120000", "150000" },
+        { "", "57", "66", "41", "77", "79  " }
     };
   }
 
@@ -390,7 +385,7 @@ public class SistemGudangA1 {
     System.out.println("|   2. Toner                  |");
     System.out.println("|   3. Serum                  |");
     System.out.println("|   4. Sunscreen              |");
-    System.out.println("|   5. Lipcream                |");
+    System.out.println("|   5. Lipcream               |");
     System.out.println("==============================");
     pilihItem = print.nextInt();
   }
@@ -409,7 +404,13 @@ public class SistemGudangA1 {
   }
 
   static void suratjalan() {
+
     int jenisBarang, jumlahBarang;
+    LocalDate tanggalHariIni = LocalDate.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(6);
+    String formatTanggalKadaluwarsa = tanggalKadaluwarsa.format(formatter);
+    System.out.println();
     System.out.println("Masukkan nama barang: ");
     jenisBarang = print.nextInt();
     System.out.print("Masukkan jumlah barang: ");
@@ -418,8 +419,9 @@ public class SistemGudangA1 {
     System.out.println("==============================");
     System.out.println("|     SURAT JALAN BARANG     |");
     System.out.println("==============================");
-    System.out.println("|   Nama Barang: " + (jenisBarang));
-    System.out.println("|   jumlah Barang: " + jumlahBarang);
+    System.out.println("|   Nama Barang: " + (jenisBarang) + "|");
+    System.out.println("|   Jumlah Barang: " + jumlahBarang + "|");
+    System.out.println("|   Tanggal : " + (tanggalHariIni) + "|");
     System.out.println("==============================");
     System.exit(0);
   }
