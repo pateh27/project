@@ -1,18 +1,14 @@
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class SistemGudangA1 {
 
-  /// static String rakSembako[][];
-  // static String rakKosmetik[][];
-  // static String rakPakaian[][];
   static int[][] Sembako;
   static int[][] Kosmetik;
   static int[][] Pakaian;
   static int stok;
-  static int stokBarang;
   static int stokBaru;
+  static int stokBarang;
   static int stokBaruSkincare;
   static int harga;
   static int valuasi;
@@ -79,7 +75,7 @@ public class SistemGudangA1 {
           kurangStok();
           break;
         case 3:
-          hitungValuasi(totalVal, stokBarang);
+          hitungValuasi(totalVal);
           break;
         case 4:
           suratjalan();
@@ -148,8 +144,8 @@ public class SistemGudangA1 {
     int stok = pilihItem;
 
     if (pilihan == 1) {
-      if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5) {
-        for (int x = pilihItem; x < Sembako.length; ++x) {
+      /*if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5)*/{
+        for (int x = pilihItem; x < Sembako.length; x++) {
           stok = Sembako[0][pilihItem];
         }
         System.out.println(Sembako[0][pilihItem]);
@@ -221,97 +217,76 @@ public class SistemGudangA1 {
 
   static int kurangStok() {
     int a = stokBaru;
-    int stokBarang = 0;
+    int stokBaru = 0;
     System.out.println(a);
     System.out.print("Masukkan jumlah pengambilan : ");
     int b = print.nextInt();
     if (b > a) {
       System.err.println("Stok tidak cukup");
     } else if (a > b) {
-      stokBarang = a - b;
+      stokBaru = a - b;
       a -= b;
-      System.out.println("jumlah stok saat ini: " + stokBarang);
+      System.out.println("jumlah stok saat ini: " + stokBaru);
       System.out.print("Mau mengambil stok lagi (y/n): ");
       String ulang = print.next();
       if (ulang.equalsIgnoreCase("y")) {
         System.out.print("Masukkan jumlah pengambilan : ");
         b = print.nextInt();
-        stokBarang = a - b;
+        stokBaru = a - b;
         a -= b;
-        System.out.println("jumlah stok saat ini: " + stokBarang);
+        System.out.println("jumlah stok saat ini: " + stokBaru);
       } else {
         System.out.println(
             "~~~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~~~");
         System.exit(0);
       }
-      System.out.println("jumlah stok saat ini adalah : " + stokBarang);
+      System.out.println("jumlah stok saat ini adalah : " + stokBaru);
     }
-    return stokBarang;
+    return stokBaru;
   }
 
-  static int hitungValuasi(int totalValuasi, int stokBarang) {
-    jumlah = stokBarang;
-    System.out.println(jumlah);
+  static int hitungValuasi(int totalValuasi) {
+    int jumlah = stokBaru;
     switch (pilihan) {
       case 1:
         tampilItemSembako();
-        if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5) {
+        /*if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5)/* */ 
           for (int i = 0; i < Sembako.length; ++i) {
             int harga = Sembako[i][pilihItem];
+            System.out.println(Sembako[i][pilihItem]);
+            totalValuasi = jumlah * Sembako[1][pilihItem];
+            System.out.println(harga + " x " + jumlah + " = " + totalValuasi);
           }
-          System.out.println(harga[i][pilihItem]);
-        }
-        totalValuasi = jumlah * harga;
-        System.out.println(harga + " x " + jumlah + " = " + totalValuasi);
+        
         break;
       case 2:
         tampilItemKosmetik();
-        if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5) {
-          for (int i = 0; i < Kosmetik.length; i++) {
-            int harga = Kosmetik[1][pilihItem];
+          for (int i = 0; i < Kosmetik.length; ++i) {
+            int harga = Kosmetik[i][pilihItem];
+            System.out.println(Kosmetik[i][pilihItem]);
+            totalValuasi = jumlah * Kosmetik[1][pilihItem];
+            System.out.println(harga + " x " + jumlah + " = " + totalValuasi);
           }
-          System.out.println(harga);
-        }
-        totalValuasi = jumlah * harga;
-        System.out.println(harga + " x " + jumlah + " = " + totalValuasi);
-        break;
+          break;
       case 3:
         tampilItemPakaian();
-        if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5) {
-          for (int i = 0; i < Pakaian.length; i++) {
-            int harga = Pakaian[1][pilihItem];
-          }
-          System.out.println(harga);
+        for (int i = 0; i < Pakaian.length; ++i) {
+          int harga = Pakaian[i][pilihItem];
+          totalValuasi = jumlah * Pakaian[1][pilihItem];
+          System.out.println(harga + " x " + jumlah + " = "+ totalValuasi);
         }
-        totalValuasi = jumlah * pilihItem;
-        System.out.println(harga + " x " + jumlah + " = " + totalValuasi);
-        break;
-      default:
-        break;
+      break;
+        
     }
     System.out.println("Valuasi barang : " + totalValuasi);
     return totalValuasi;
+      
 
   }
 
   static {
     print = new Scanner(System.in);
     int pilihItem;
-    /*
-     * rakSembako = new String[][] {
-     * { "", "beras", "garam", "gula", "telur", "minyak" },
-     * { "0", "12000", "5000", "8000", "27000", "30000" }
-     * };
-     * rakKosmetik = new String[][] {
-     * { "", "facewash", "toner", "serum", "sunsreen", "lipcream" },
-     * { "", "35000", "25000", "60000", "45000", "40000" },
-     * 
-     * };
-     * rakPakaian = new String[][] {
-     * { "", "kaos", "kemeja", "rok", "celana jeans", "jaket" },
-     * { "", "60000", "80000", "50000", "120000", "150000" },
-     * };
-     */
     Sembako = new int[][] {
         { 0, 45, 76, 67, 56, 44 },
         { 0, 1200, 5000, 8000, 27000, 30000 }
@@ -372,9 +347,7 @@ public class SistemGudangA1 {
 
     int jenisBarang, jumlahBarang;
     LocalDate tanggalHariIni = LocalDate.now();
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    LocalDate tanggalKadaluwarsa = tanggalHariIni.plusMonths(6);
-    String formatTanggalKadaluwarsa = tanggalKadaluwarsa.format(formatter);
+   
     System.out.println();
     System.out.println("Masukkan nama barang: ");
     jenisBarang = print.nextInt();
