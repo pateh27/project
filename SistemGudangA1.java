@@ -79,6 +79,7 @@ public class SistemGudangA1 {
           break;
         case 4:
           suratjalan();
+          break;
         case 5:
           System.out.println(
               "~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~");
@@ -275,9 +276,8 @@ public class SistemGudangA1 {
           totalValuasi = jumlah * Pakaian[1][pilihItem];
           System.out.println(harga + " x " + jumlah + " = "+ totalValuasi);
         }
-      break;
-        
-    }
+        break;
+      }
     System.out.println("Valuasi barang : " + totalValuasi);
     return totalValuasi;
       
@@ -345,21 +345,22 @@ public class SistemGudangA1 {
 
   static void suratjalan() {
 
-    int jenisBarang, jumlahBarang;
+    int jumlahBarang;
+    String jenisBarang;
     LocalDate tanggalHariIni = LocalDate.now();
    
     System.out.println();
     System.out.println("Masukkan nama barang: ");
-    jenisBarang = print.nextInt();
+    jenisBarang = print.next();
     System.out.print("Masukkan jumlah barang: ");
     jumlahBarang = print.nextInt();
     print.close();
     System.out.println("==============================");
     System.out.println("|     SURAT JALAN BARANG     |");
     System.out.println("==============================");
-    System.out.println("|   Nama Barang: " + (jenisBarang) + "|");
+    System.out.println("|   Nama Barang: " + jenisBarang + "|");
     System.out.println("|   Jumlah Barang: " + jumlahBarang + "|");
-    System.out.println("|   Tanggal : " + (tanggalHariIni) + "|");
+    System.out.println("|   Tanggal : " + tanggalHariIni + "|");
     System.out.println("==============================");
     System.exit(0);
   }
