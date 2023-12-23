@@ -31,9 +31,9 @@ public class SistemGudangA1 {
 
   public static void main(String[] args) {
     Title();
-    // percobaan login
+   
     login();
-    // tampilMenu();
+    
 
     boolean Exit = true;
     int choose = 0;
@@ -135,7 +135,9 @@ public class SistemGudangA1 {
               "| Anda telah mencapai batas percobaan. Akun diblokir |");
           System.out.println(
               "=====================================================");
-          return;
+          System.out.println(
+              "~~~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~~~");
+          System.exit(0);
         }
       }
     }
@@ -145,7 +147,7 @@ public class SistemGudangA1 {
     int stok = pilihItem;
 
     if (pilihan == 1) {
-      /*if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5)*/{
+      
         for (int x = pilihItem; x < Sembako.length; x++) {
           stok = Sembako[0][pilihItem];
         }
@@ -163,9 +165,9 @@ public class SistemGudangA1 {
           stok += jmlMasuk;
           System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
         }
-      }
+      
     } else if (pilihan == 2) {
-      if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5) {
+         
         for (int x = pilihItem; x < Kosmetik.length; ++x) {
           stok = Kosmetik[0][pilihItem];
         }
@@ -182,10 +184,10 @@ public class SistemGudangA1 {
           stokBaru = stok + jmlMasuk;
           stok += jmlMasuk;
           System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
-        }
+        
       }
     } else if (pilihan == 3) {
-      if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5) {
+     
         for (int x = pilihItem; x < Pakaian.length; ++x) {
           stok = Pakaian[0][pilihItem];
         }
@@ -203,7 +205,7 @@ public class SistemGudangA1 {
           stok += jmlMasuk;
           System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
         }
-      }
+      
     } else {
       System.out.print("Masukkan stok : ");
       stok = print.nextInt();
@@ -224,6 +226,19 @@ public class SistemGudangA1 {
     int b = print.nextInt();
     if (b > a) {
       System.err.println("Stok tidak cukup");
+      System.out.print("Mau mengambil stok dengan jumlah yang berbeda? (y/n): ");
+      String ulang = print.next();
+      if (ulang.equalsIgnoreCase("y")) {
+          System.out.print("Masukkan jumlah pengambilan : ");
+          b = print.nextInt();
+          stokBaru = a - b;
+          a -= b;
+          System.out.println("jumlah stok saat ini: " + stokBaru);
+        } else {
+          System.out.println(
+              "~~~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~~~");
+          System.exit(0);
+      }
     } else if (a > b) {
       stokBaru = a - b;
       a -= b;
@@ -251,7 +266,6 @@ public class SistemGudangA1 {
     switch (pilihan) {
       case 1:
         tampilItemSembako();
-        /*if (pilihItem == 1 || pilihItem == 2 || pilihItem == 3 || pilihItem == 4 || pilihItem == 5)/* */ 
           for (int i = 0; i < Sembako.length; ++i) {
             int harga = Sembako[i][pilihItem];
             System.out.println(Sembako[i][pilihItem]);
@@ -286,10 +300,10 @@ public class SistemGudangA1 {
 
   static {
     print = new Scanner(System.in);
-    int pilihItem;
+
     Sembako = new int[][] {
         { 0, 45, 76, 67, 56, 44 },
-        { 0, 1200, 5000, 8000, 27000, 30000 }
+        { 0, 12000, 5000, 8000, 27000, 30000 }
     };
     Kosmetik = new int[][] {
         { 0, 24, 34, 43, 37, 49 },
