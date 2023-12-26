@@ -105,17 +105,21 @@ public class SistemGudangA1 {
   }
 
   static void login() {
+    // menentukan maksimal percobaan login (3kali)
     int maksPercobaan = 3;
+    //perulangan untuk proses login berjalan maksimal 3 kali
     for (int i = 1; i <= maksPercobaan; i++) {
+      // meminta input username dan pin
       System.out.print(" Username : ");
       String usnLogin = print.nextLine();
       // String usnLogin = "admin";
       System.out.print(" PIN      : ");
       String pinLogin = print.nextLine();
       // String pinLogin = "gudang123";
-      // cek usn dan pin
+      // pengecekan usn dan pin
       if (usnLogin.equalsIgnoreCase("admin") &&
           pinLogin.equalsIgnoreCase("gudang123")) {
+        // pesan jika login berhasil
         System.out.println(
             "=====================================================");
         System.out.println("| Login Berhasil                     |");
@@ -124,6 +128,7 @@ public class SistemGudangA1 {
         System.out.println();
         break;
       } else {
+        //pesan jika login gagal
         System.out.println(
             "=====================================================");
         System.out.println(
@@ -144,25 +149,37 @@ public class SistemGudangA1 {
   }
 
   static int tambahStok() {
+    // inisialisasi variabel
     int stok = pilihItem;
 
     if (pilihan == 1) {
-      
+        //perulangan untuk mencari indeks baris yang sesuai
         for (int x = pilihItem; x < Sembako.length; x++) {
           stok = Sembako[0][pilihItem];
         }
+        // mencetak nama barang
         System.out.println(Sembako[0][pilihItem]);
+        // meminta input untuk konfirmasi ingin menambah stok/tidak
         System.out.print("Mau nambah stok (y/n): ");
         String ulang = print.next();
+        // jika user ingin menambah stok
         if (ulang.equalsIgnoreCase("y")) {
+          // meminta input jumlah stok yang akan ditambah
           System.out.print("Masukkan tambahan jumlah: ");
+          //menyimpan input ke dalam variabel
           jmlMasuk = print.nextInt();
+          // menghitung stok baru
           stokBaru = stok + jmlMasuk;
+          // mengubah stok barang saat ini menjadi stok baru
           stok += jmlMasuk;
+          // mencetak stok baru
           System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
+          // jika user tidak ingin menambah stok
         } else {
+          // menghitung stok baru dengan dan mengubah stok barang menjadi stok baru
           stokBaru = stok + jmlMasuk;
           stok += jmlMasuk;
+          // mencetak stok baru
           System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
         }
       
@@ -215,26 +232,43 @@ public class SistemGudangA1 {
       stok += jmlMasuk;
       System.out.println(" jumlah stok saat ini adalah : " + stokBaru);
     }
+    // mengembalikan stok barang baru
     return stokBaru;
   }
 
+  
   static int kurangStok() {
+    // inisialisasi variabel a dengan nilai variabel stokBaru
     int a = stokBaru;
+    // inisialisasi dengan nilai 0
     int stokBaru = 0;
+    // mencetak stok barang awal
     System.out.println(a);
+    // mencetak pesan input dari user untuk memasukkan jumlah pengambilan barang
     System.out.print("Masukkan jumlah pengambilan : ");
+    // menerima input dari user dan disimpan dalam variabel b
     int b = print.nextInt();
+    // jika jumlah pengambilan barang > stok barang awal
     if (b > a) {
+      // mencetak pesan stok tidak cukup
       System.err.println("Stok tidak cukup");
+      // meminta konfirmasi user apakah ingin mengambil stok dgn jumlah berbeda
       System.out.print("Mau mengambil stok dengan jumlah yang berbeda? (y/n): ");
+      // menerima input user dan disimpan dalam variabel ulang
       String ulang = print.next();
+      // jika jumlah pengambilan berbeda
       if (ulang.equalsIgnoreCase("y")) {
+        // meminta user input jumlah pengambilan
           System.out.print("Masukkan jumlah pengambilan : ");
+          // menerima input dan disimpan dalam variabel b
           b = print.nextInt();
+          // mengurangi stok
           stokBaru = a - b;
           a -= b;
+          // mencetak stok barang setelah dikurangi
           System.out.println("jumlah stok saat ini: " + stokBaru);
         } else {
+          // jika user tidak mengambil stok dgn jml berbeda
           System.out.println(
               "~~~~~~~~~~~~~~~~~~~~~Keluaaaarrrrrr~~~~~~~~~~~~~~~~~~~~");
           System.exit(0);
@@ -258,21 +292,29 @@ public class SistemGudangA1 {
       }
       System.out.println("jumlah stok saat ini adalah : " + stokBaru);
     }
+    // mengembalikan nilai stok barang baru
     return stokBaru;
   }
 
   static int hitungValuasi(int totalValuasi) {
+    // inisialisasi variabel jumlah dengan nilai stokBaru
     int jumlah = stokBaru;
+    
     switch (pilihan) {
       case 1:
+      // memanggil fungsi untuk menampilkan daftar item sembako
         tampilItemSembako();
+        // perulangan for
           for (int i = 0; i < Sembako.length; ++i) {
+            // mengambil harga barang dari array sembako
             int harga = Sembako[i][pilihItem];
+            // mencetak harga barang
             System.out.println(Sembako[i][pilihItem]);
+            // menghitung valuasi barang 
             totalValuasi = jumlah * Sembako[1][pilihItem];
             System.out.println(harga + " x " + jumlah + " = " + totalValuasi);
           }
-        
+        // mengakhiri blok kode case
         break;
       case 2:
         tampilItemKosmetik();
@@ -357,25 +399,31 @@ public class SistemGudangA1 {
     pilihItem = print.nextInt();
   }
 
+  // mendeklarasikan fungsi tanpa mengemablikan nilai
   static void suratjalan() {
-
+    // inisialisasi variabel
     int jumlahBarang;
     String jenisBarang;
     LocalDate tanggalHariIni = LocalDate.now();
-   
-    System.out.println();
+    // meminta user memasukkan nama barang
     System.out.println("Masukkan nama barang: ");
+    // menerima input dan disimpan dalam variabel jenisBarang
     jenisBarang = print.next();
+    // meminta user memasukkan jumlah barang
     System.out.print("Masukkan jumlah barang: ");
+    // menerima input dan disimpan dalam variabel jumlahBarang
     jumlahBarang = print.nextInt();
+    // menutup objek scanner
     print.close();
+    // mencetak surat jalan
     System.out.println("==============================");
     System.out.println("|     SURAT JALAN BARANG     |");
     System.out.println("==============================");
-    System.out.println("|   Nama Barang: " + jenisBarang + "|");
-    System.out.println("|   Jumlah Barang: " + jumlahBarang + "|");
-    System.out.println("|   Tanggal : " + tanggalHariIni + "|");
+    System.out.println("|   Nama Barang: " + jenisBarang +"       |");
+    System.out.println("|   Jumlah Barang: " + jumlahBarang +"        |");
+    System.out.println("|   Tanggal : " + tanggalHariIni + "     |");
     System.out.println("==============================");
+    // menghentikan eksekusi program
     System.exit(0);
   }
 }
